@@ -80,6 +80,27 @@ nav .wrap {
 .nav-links a:hover { color: var(--vermillion); }
 .nav-links a.active { color: var(--vermillion); }
 
+.nav-cta {
+  background: var(--vermillion) !important;
+  color: #fff !important;
+  padding: 0.5rem 1.2rem;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--vermillion-hover) !important;
+  color: #fff !important;
+}
+
+body.home .nav-cta {
+  background: var(--vermillion) !important;
+  color: #fff !important;
+}
+
+body.home .nav-cta:hover {
+  background: var(--vermillion-hover) !important;
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -241,6 +262,62 @@ body.home .hero-meta {
 }
 body.home .hero-meta a { color: var(--vermillion); }
 body.home .hero-meta a:hover { color: #fff; }
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+body.home .hero-ctas { justify-content: center; }
+
+.hero-btn-primary {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: #fff;
+  background: var(--vermillion);
+  padding: 0.9rem 2.4rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.hero-btn-primary:hover {
+  background: var(--vermillion-hover);
+  transform: translateY(-2px);
+}
+
+.hero-btn-secondary {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  padding: 0.9rem 2.4rem;
+  border: 1px solid var(--rule);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+body.home .hero-btn-secondary {
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.25);
+}
+
+body.home .hero-btn-secondary:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.hero-btn-secondary:hover {
+  border-color: var(--vermillion);
+  color: var(--vermillion);
+}
 
 .hero-photo {
   display: none;
@@ -1039,6 +1116,120 @@ footer .wrap {
 
 .footer-right a:hover { color: var(--vermillion); }
 
+/* ————— SERVICES ————— */
+.services {
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+  background: var(--cream-dark);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--vermillion);
+  padding: 2rem 1.6rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.service-icon {
+  font-size: 1.5rem;
+  color: var(--vermillion);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.service-name {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.service-desc {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+/* ————— TESTIMONIALS ————— */
+.testimonials {
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 2rem 1.8rem;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  font-family: Georgia, serif;
+  font-size: 3.5rem;
+  color: var(--vermillion);
+  line-height: 1;
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+  opacity: 0.2;
+}
+
+.testimonial-quote {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  font-style: italic;
+  padding-top: 1.2rem;
+  flex: 1;
+}
+
+.testimonial-author {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.testimonial-name {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.testimonial-role {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  margin-top: 0.15rem;
+}
+
 /* ————— PROJECT CARDS ————— */
 .project-grid {
   display: grid;
@@ -1196,7 +1387,10 @@ footer .wrap {
   }
 
   .featured-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .nav-cta { display: inline-block; margin-top: 0.5rem; text-align: center; }
   .case-grid { grid-template-columns: 1fr; }
   .case-inline { grid-template-columns: 1fr; gap: 1.5rem; }
   .case-body { grid-template-columns: 1fr; gap: 2rem; }

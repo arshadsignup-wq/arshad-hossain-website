@@ -72,7 +72,47 @@ def breadcrumbs(meta, path):
             "@id": url_for(path) + "#breadcrumb", "itemListElement": items}
 
 
-def schema_for(path, meta):
+def faq_nodes(html_src, u):
+    """Build FAQPage from the *visible* markup, so schema can never drift
+    from what a reader sees. Expects <section class="faq"> with h3/p pairs."""
+    sec = re.search(r'<section class="faq">(.*?)</section>', html_src, re.S)
+    if not sec:
+        return None
+    qa = re.findall(r'<h3[^>]*>(.*?)</h3>\s*(.*?)(?=<h3|\Z)', sec.group(1), re.S)
+    items = []
+    for q, a in qa:
+        q = re.sub(r'<[^>]+>', '', q).strip()
+        a = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', a)).strip()
+        if q and a:
+            items.append({"@type": "Question", "name": html.unescape(q),
+                          "acceptedAnswer": {"@type": "Answer", "text": html.unescape(a)}})
+    if not items:
+        return None
+    return {"@type": "FAQPage", "@id": u + "#faq", "mainEntity": items}
+
+
+def full_person():
+    return {"@type": "Person", "@id": PERSON_ID, "name": AUTHOR,
+            "url": f"{SITE}/about/",
+            "jobTitle": "Independent Meta Ads and SEO Specialist",
+            "description": IDENTITY,
+            "address": {"@type": "PostalAddress",
+                        "addressLocality": "Dhaka", "addressCountry": "BD"},
+            "alumniOf": {"@type": "CollegeOrUniversity", "name": "BRAC University",
+                         "address": {"@type": "PostalAddress",
+                                     "addressLocality": "Dhaka", "addressCountry": "BD"}},
+            "knowsAbout": ["Meta Ads", "Facebook Ads", "Instagram Ads",
+                           "Click-to-Messenger Ads", "Conversions API",
+                           "Search engine optimization", "Local SEO",
+                           "Lead generation", "E-commerce advertising"],
+            "knowsLanguage": ["en", "bn"],
+            "sameAs": SAME_AS,
+            "makesOffer": [{"@id": f"{SITE}/services/meta-ads-management/#service"},
+                           {"@id": f"{SITE}/services/messenger-ads/#service"},
+                           {"@id": f"{SITE}/services/seo/#service"}]}
+
+
+def schema_for(path, meta, html_src=""):
     u = url_for(path)
     nodes = []
     kind = meta["kind"]
@@ -86,18 +126,27 @@ def schema_for(path, meta):
                       "name": meta["title"], "description": meta["desc"],
                       "isPartOf": {"@id": WEBSITE_ID},
                       "about": {"@id": PERSON_ID}})
-        nodes.append({"@type": "Person", "@id": PERSON_ID, "name": AUTHOR,
-                      "url": f"{SITE}/about/",
-                      "jobTitle": "Independent Meta Ads and SEO Specialist",
-                      "description": IDENTITY,
-                      "address": {"@type": "PostalAddress",
-                                  "addressLocality": "Dhaka", "addressCountry": "BD"},
-                      "knowsAbout": ["Meta Ads", "Facebook Ads", "Instagram Ads",
-                                     "Click-to-Messenger Ads", "Conversions API",
-                                     "Search engine optimization", "Lead generation",
-                                     "E-commerce advertising"],
-                      "knowsLanguage": ["en", "bn"],
-                      "sameAs": SAME_AS})
+        nodes.append(person_stub())
+    elif kind == "about":
+        # The one page that defines the entity in full.
+        nodes.append({"@type": "ProfilePage", "@id": u + "#page", "url": u,
+                      "name": meta["title"], "description": meta["desc"],
+                      "isPartOf": {"@id": WEBSITE_ID},
+                      "mainEntity": {"@id": PERSON_ID}})
+        nodes.append(full_person())
+    elif kind == "service":
+        nodes.append({"@type": "Service", "@id": u + "#service",
+                      "name": meta.get("service_name", meta["title"]),
+                      "serviceType": meta.get("service_type", "Digital marketing"),
+                      "description": meta["desc"],
+                      "provider": {"@id": PERSON_ID},
+                      "areaServed": [{"@type": "Country", "name": n} for n in
+                                     ("United States", "Canada", "Singapore", "Bangladesh")],
+                      "url": u})
+        nodes.append({"@type": "WebPage", "@id": u + "#page", "url": u,
+                      "name": meta["title"], "description": meta["desc"],
+                      "isPartOf": {"@id": WEBSITE_ID}})
+        nodes.append(person_stub())
     elif kind == "post":
         nodes.append({"@type": "BlogPosting", "@id": u + "#post",
                       "headline": meta["title"], "description": meta["desc"],
@@ -129,11 +178,14 @@ def schema_for(path, meta):
     bc = breadcrumbs(meta, path)
     if bc:
         nodes.append(bc)
+    faq = faq_nodes(html_src, u)
+    if faq:
+        nodes.append(faq)
     return {"@context": "https://schema.org", "@graph": nodes}
 
 
 # ------------------------------------------------------------------- block
-def head_block(path, meta):
+def head_block(path, meta, html_src=""):
     u = url_for(path)
     img = SITE + meta.get("image", "/og-default.png")
     og_type = "article" if meta["kind"] in ("post", "case") else "website"
@@ -169,7 +221,7 @@ def head_block(path, meta):
           '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
           '<link rel="manifest" href="/site.webmanifest">',
           '<script type="application/ld+json">',
-          json.dumps(schema_for(path, meta), indent=1, ensure_ascii=False),
+          json.dumps(schema_for(path, meta, html_src), indent=1, ensure_ascii=False),
           '</script>',
           END]
     return "\n".join(L)
@@ -177,7 +229,7 @@ def head_block(path, meta):
 
 def inject(path, meta, check=False):
     s = read(path)
-    block = head_block(path, meta)
+    block = head_block(path, meta, s)
 
     if START in s and END in s:
         cur = s[s.index(START): s.index(END) + len(END)]

@@ -66,6 +66,46 @@ PAGES = {
         crumbs=[("Home", "")],
     ),
 
+    # ---- entity anchor
+    "about/index.html": dict(
+        kind="about",
+        title="About Arshad Hossain — Meta Ads & SEO Freelancer",
+        desc="Independent Meta Ads and SEO specialist based in Dhaka, Bangladesh, working with clients in the US, Canada and Singapore. $250K+ ad spend managed since 2020.",
+        crumbs=[("Home", "")],
+    ),
+
+    # ---- services
+    "services/index.html": dict(
+        kind="hub",
+        title="Services — Freelance Meta Ads & SEO",
+        desc="Meta Ads, click-to-Messenger campaigns and SEO, run by one freelancer. How engagements work, what's included, what isn't, and the evidence for each.",
+        crumbs=[("Home", "")],
+    ),
+    "services/meta-ads-management/index.html": dict(
+        kind="service",
+        title="Freelance Facebook & Instagram Ads Manager",
+        desc="Freelance Meta Ads management: campaign structure, Conversions API, creative testing and daily optimisation. Documented cost per lead from $86 down to $3.91.",
+        crumbs=[("Home", ""), ("Services", "services/")],
+        service_name="Meta Ads Management",
+        service_type="Facebook and Instagram advertising management",
+    ),
+    "services/messenger-ads/index.html": dict(
+        kind="service",
+        title="Click-to-Messenger Ad Campaigns",
+        desc="Click-to-Messenger campaign management. Conversations at two to four cents each in conversational-commerce markets, and an honest account of where it doesn't fit.",
+        crumbs=[("Home", ""), ("Services", "services/")],
+        service_name="Click-to-Messenger Ads",
+        service_type="Conversational advertising campaign management",
+    ),
+    "services/seo/index.html": dict(
+        kind="service",
+        title="SEO for Clinics, Fintech and Niche B2B",
+        desc="SEO for categories where trust decides the ranking: technical foundations, Google Business Profile work and credible content. Zero to Page 1 in three months.",
+        crumbs=[("Home", ""), ("Services", "services/")],
+        service_name="SEO and Content Strategy",
+        service_type="Search engine optimisation",
+    ),
+
     # ---- conversion
     "free-audit/index.html": dict(
         kind="form",

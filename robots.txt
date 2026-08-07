@@ -1,0 +1,43 @@
+# arshadhossain.com
+
+User-agent: *
+Allow: /
+
+# AI answer engines are a real referral channel for consultant queries,
+# and the whole point of the benchmark pages is to be quoted. Everything
+# here is public and there is nothing worth withholding — so these are
+# allowed deliberately, not by omission. Do not "block AI bots" here.
+
+# Live fetchers — a user asked a question and the answer needed this page
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Index / training crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.arshadhossain.com/sitemap.xml

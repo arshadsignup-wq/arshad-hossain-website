@@ -70,22 +70,22 @@
     },
     {
       "source": "/cases/wardrobe-conversion.html",
-      "destination": "/cases/wardrobe-conversion/",
+      "destination": "/cases/wardrobe-by-syra/#conversions",
       "permanent": true
     },
     {
       "source": "/cases/wardrobe-eid-adha.html",
-      "destination": "/cases/wardrobe-eid-adha/",
+      "destination": "/cases/wardrobe-by-syra/#eid-ul-adha",
       "permanent": true
     },
     {
       "source": "/cases/wardrobe-eid-message.html",
-      "destination": "/cases/wardrobe-eid-message/",
+      "destination": "/cases/wardrobe-by-syra/#eid-message",
       "permanent": true
     },
     {
       "source": "/cases/wardrobe-reel.html",
-      "destination": "/cases/wardrobe-reel/",
+      "destination": "/cases/wardrobe-by-syra/#seasonal-reel",
       "permanent": true
     },
     {
@@ -121,6 +121,26 @@
     {
       "source": "/projects/quillbill.html",
       "destination": "/projects/quillbill/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-eid-adha/",
+      "destination": "/cases/wardrobe-by-syra/#eid-ul-adha",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-eid-message/",
+      "destination": "/cases/wardrobe-by-syra/#eid-message",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-conversion/",
+      "destination": "/cases/wardrobe-by-syra/#conversions",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-reel/",
+      "destination": "/cases/wardrobe-by-syra/#seasonal-reel",
       "permanent": true
     }
   ],

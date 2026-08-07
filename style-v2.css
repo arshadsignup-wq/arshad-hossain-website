@@ -210,6 +210,13 @@ a { color: inherit; text-decoration: none; }
   max-width: 20ch;
 }
 
+.section-sub {
+  color: var(--text-mid);
+  margin: 16px 0 0;
+  max-width: 58ch;
+  font-size: 1.02rem;
+}
+
 .section-link {
   font-family: var(--font-body);
   font-size: 13px;
@@ -241,14 +248,28 @@ nav.scrolled {
   border-bottom-color: var(--line-strong);
 }
 
+/* Three zones: logo left, menu dead centre, CTA right. The centre column
+   is auto-width so the menu is centred on the bar, not on the leftover
+   space between logo and button. */
 nav .wrap {
-  display: flex;
+  display: grid;
+  /* minmax(max-content, 1fr) on the side tracks, not plain 1fr: with 1fr
+     the outer columns shrink below their content on tighter viewports and
+     the CTA gets clipped. This keeps the menu centred when there's room
+     and protects the button when there isn't. */
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   align-items: center;
-  gap: 56px;
   height: 72px;
   transition: height 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 nav.scrolled .wrap { height: 58px; }
+
+.nav-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
 .nav-name {
   font-family: var(--font-body);
@@ -260,19 +281,14 @@ nav.scrolled .wrap { height: 58px; }
 .nav-name span { color: var(--text-faint); }
 
 .nav-links {
+  justify-self: center;
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 38px;
   list-style: none;
   margin: 0;
   padding: 0;
-  /* Span the remaining width so the CTA can be pushed to the far right,
-     instead of the whole bar bunching up on the left. */
-  flex: 1;
 }
-
-/* The CTA is always the last item — hold it hard right, clear of the menu */
-.nav-links > li:last-child { margin-left: auto; }
 
 .nav-links a {
   font-family: var(--font-body);
@@ -287,8 +303,10 @@ nav.scrolled .wrap { height: 58px; }
    fourth menu item. Matches the hero CTA. */
 .nav-cta {
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.004em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
   padding: 10px 20px;
   border: 1px solid var(--accent-deep);
   border-radius: 5px;
@@ -615,16 +633,22 @@ nav.scrolled .wrap { height: 58px; }
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 13.5px;
+  /* Was 13.5px at weight 400, which rendered thin and washed-out against
+     the vermillion fill. Heavier and slightly larger reads solid. */
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.004em;
   padding: 14px 24px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid transparent;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .btn-primary {
   background: var(--accent-deep);
   color: #fff;
   border-color: var(--accent-deep);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
 }
 .btn-primary:hover { background: #d64c26; border-color: #d64c26; transform: translateY(-1px); }
 .btn-ghost { border-color: var(--line-strong); color: var(--text); }
@@ -716,6 +740,33 @@ section.band + section.band { border-top: 1px solid var(--line); }
 }
 .work-card:hover .work-cta { color: var(--accent); }
 
+/* Text-only card (case studies index — no screenshot) */
+.work-card--flat .work-body { padding: 30px 26px 28px; min-height: 210px; }
+
+/* Two-up grid for the projects index */
+.work-grid--2 { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+.work-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-top: auto;
+}
+.work-actions .work-cta { margin-top: 0; }
+.work-visit {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-line);
+  transition: color 0.2s, border-color 0.2s;
+}
+.work-visit:hover { color: var(--text); border-bottom-color: var(--text); }
+
+/* SEO variant of the small section label */
+.eyebrow.seo { color: var(--green); }
+.eyebrow.seo::before { background: rgba(75, 167, 119, 0.5); }
+
 /* ————— SERVICES (dashed grid, after khalidfarhan.com) ————— */
 
 .svc-grid {
@@ -735,12 +786,31 @@ section.band + section.band { border-top: 1px solid var(--line); }
 }
 .svc-card:hover { background: rgba(255, 255, 255, 0.02); }
 
+.svc-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  margin-bottom: 20px;
+  transition: background 0.25s, transform 0.25s, border-color 0.25s;
+}
+.svc-icon svg { width: 21px; height: 21px; }
+.svc-card:hover .svc-icon {
+  background: rgba(224, 103, 63, 0.22);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 .svc-num {
   font-family: var(--font-body);
   font-size: 11.5px;
   letter-spacing: 0.1em;
   color: var(--text-faint);
-  margin: 0 0 22px;
+  margin: 0 0 10px;
 }
 .svc-name {
   font-size: 1.24rem;
@@ -856,9 +926,59 @@ section.band + section.band { border-top: 1px solid var(--line); }
   padding: 8px 16px;
 }
 
-/* ————— TESTIMONIALS ————— */
+/* ————— TESTIMONIALS —————
+   Horizontal scroller with snap. Works as a plain scrollable row with no
+   JS at all; motion.js only adds the arrow buttons and dot state. */
 
-.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.quotes {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, calc(33.333% - 19px));
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.quotes::-webkit-scrollbar { display: none; }
+.quotes > .quote { scroll-snap-align: start; }
+
+.quotes-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+.quotes-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: none;
+  color: var(--text-mid);
+  font-size: 15px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.quotes-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.quotes-btn:disabled { opacity: 0.3; cursor: default; }
+
+.quotes-dots { display: flex; gap: 6px; margin-left: 8px; }
+.quotes-dots span {
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  transition: background 0.3s;
+}
+.quotes-dots span.is-on { background: var(--accent); }
 
 .quote {
   border: 1px solid var(--line);
@@ -1152,8 +1272,17 @@ footer .wrap {
 }
 .prose p { margin: 0 0 22px; }
 .prose strong { color: var(--text); font-weight: 600; }
-.prose a { color: var(--accent); border-bottom: 1px solid var(--accent-line); }
-.prose a:hover { color: var(--text); border-bottom-color: var(--text); }
+/* :not(.btn) matters — `.prose a` outranks `.btn-primary` on specificity,
+   so without it the CTA inside a post renders accent-on-accent and the
+   label disappears. Same for .section-link at the foot of these pages. */
+.prose a:not(.btn):not(.section-link) {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-line);
+}
+.prose a:not(.btn):not(.section-link):hover {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
 .prose ul, .prose ol { margin: 0 0 22px; padding-left: 22px; }
 .prose li { margin-bottom: 10px; }
 .prose li::marker { color: var(--text-faint); }
@@ -1461,6 +1590,12 @@ figure.shot figcaption {
 
 /* ————— RESPONSIVE ————— */
 
+/* Tighten the bar before it gets crowded, so the CTA always has room */
+@media (max-width: 980px) {
+  .nav-links { gap: 24px; }
+  .nav-links a .num { display: none; }
+}
+
 /* Below this the copy needs the full width, so the panel goes */
 @media (max-width: 1040px) {
   .hero-grid { grid-template-columns: 1fr; gap: 0; }
@@ -1468,7 +1603,8 @@ figure.shot figcaption {
 }
 
 @media (max-width: 1000px) {
-  .work-grid, .quotes, .svc-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-grid, .svc-grid, .work-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .quotes { grid-auto-columns: minmax(0, calc(50% - 14px)); }
   .path-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .form-layout { grid-template-columns: 1fr; gap: 52px; }
 }
@@ -1491,17 +1627,12 @@ figure.shot figcaption {
   }
   .nav-links.open { display: flex; }
   .nav-links li { width: 100%; }
-  /* Undo the desktop right-push inside the stacked dropdown */
-  .nav-links > li:last-child { margin-left: 0; }
   .nav-links li a { display: block; padding: 13px 0; }
-  .nav-links .nav-cta {
-    display: block;
-    margin-top: 12px;
-    text-align: center;
-    padding: 13px 20px;
-  }
   .nav-toggle { display: block; }
-  nav .wrap { gap: 0; }
+  /* Two zones on mobile: logo left, CTA + burger right. The CTA stays
+     visible rather than hiding inside the drawer. */
+  nav .wrap { display: flex; justify-content: space-between; }
+  .nav-cta { padding: 9px 15px; font-size: 12.5px; }
   /* Dropdown hangs off the bar, which shrinks once scrolled */
   nav.scrolled .nav-links { top: 58px; }
 
@@ -1522,7 +1653,8 @@ figure.shot figcaption {
     margin-bottom: 40px;
   }
 
-  .work-grid, .quotes { grid-template-columns: 1fr; gap: 20px; }
+  .work-grid, .work-grid--2 { grid-template-columns: 1fr; gap: 20px; }
+  .quotes { grid-auto-columns: minmax(0, 86%); gap: 16px; }
 
   .svc-grid { grid-template-columns: 1fr; }
   .svc-card { padding: 28px 22px 46px; }

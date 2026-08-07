@@ -1,0 +1,151 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/blog.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/local-seo-clinic-page-one.html",
+      "destination": "/blog/local-seo-clinic-page-one/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/messenger-ads-bangladesh.html",
+      "destination": "/blog/messenger-ads-bangladesh/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/meta-ads-cost-per-lead.html",
+      "destination": "/blog/meta-ads-cost-per-lead/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies.html",
+      "destination": "/cases/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/aifarming.html",
+      "destination": "/cases/aifarming/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/alami-clinic.html",
+      "destination": "/cases/alami-clinic/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/gettakaful.html",
+      "destination": "/cases/gettakaful/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/lending.html",
+      "destination": "/cases/lending/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/nevada.html",
+      "destination": "/cases/nevada/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/roofing.html",
+      "destination": "/cases/roofing/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/scalp-shop.html",
+      "destination": "/cases/scalp-shop/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/tombizmerch.html",
+      "destination": "/cases/tombizmerch/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-conversion.html",
+      "destination": "/cases/wardrobe-conversion/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-eid-adha.html",
+      "destination": "/cases/wardrobe-eid-adha/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-eid-message.html",
+      "destination": "/cases/wardrobe-eid-message/",
+      "permanent": true
+    },
+    {
+      "source": "/cases/wardrobe-reel.html",
+      "destination": "/cases/wardrobe-reel/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/free-audit.html",
+      "destination": "/free-audit/",
+      "permanent": true
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/projects/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/daag.html",
+      "destination": "/projects/daag/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/ismybabyalright.html",
+      "destination": "/projects/ismybabyalright/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/prompt-black-magic.html",
+      "destination": "/projects/prompt-black-magic/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/quillbill.html",
+      "destination": "/projects/quillbill/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

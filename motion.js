@@ -108,6 +108,57 @@
       })(stats[s]);
     }
 
+    /* —— Testimonial slider ——
+       The row already scrolls and snaps with pure CSS. This only adds
+       arrows and dots on top, so nothing breaks if it doesn't run. */
+    var quotes = document.querySelector('.quotes');
+    if (quotes && quotes.children.length > 1) {
+      var wrapEl = quotes.parentNode;
+      var nav = document.createElement('div');
+      nav.className = 'quotes-nav';
+      nav.innerHTML =
+        '<button class="quotes-btn" type="button" aria-label="Previous testimonials">&#8592;</button>' +
+        '<button class="quotes-btn" type="button" aria-label="Next testimonials">&#8594;</button>' +
+        '<div class="quotes-dots"></div>';
+      wrapEl.appendChild(nav);
+
+      var prev = nav.children[0];
+      var next = nav.children[1];
+      var dots = nav.children[2];
+
+      var pages = function () {
+        return Math.max(1, Math.ceil(quotes.scrollWidth / quotes.clientWidth));
+      };
+      var buildDots = function () {
+        dots.innerHTML = '';
+        for (var i = 0; i < pages(); i++) dots.appendChild(document.createElement('span'));
+      };
+      var sync = function () {
+        var max = quotes.scrollWidth - quotes.clientWidth;
+        prev.disabled = quotes.scrollLeft < 8;
+        next.disabled = quotes.scrollLeft > max - 8;
+        var idx = max > 0
+          ? Math.round((quotes.scrollLeft / max) * (dots.children.length - 1))
+          : 0;
+        for (var i = 0; i < dots.children.length; i++) {
+          dots.children[i].classList.toggle('is-on', i === idx);
+        }
+      };
+
+      var step = function (dir) {
+        var card = quotes.querySelector('.quote');
+        var w = card ? card.getBoundingClientRect().width + 28 : quotes.clientWidth;
+        quotes.scrollBy({ left: dir * w, behavior: 'smooth' });
+      };
+      prev.addEventListener('click', function () { step(-1); });
+      next.addEventListener('click', function () { step(1); });
+      quotes.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', function () { buildDots(); sync(); });
+
+      buildDots();
+      sync();
+    }
+
     /* —— Hero results panel ——
        Cycles three real campaigns, animating the metric each time a
        slide becomes active. Slide 1 is already correct in the HTML, so

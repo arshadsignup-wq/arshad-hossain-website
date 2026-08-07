@@ -244,7 +244,7 @@ nav.scrolled {
 nav .wrap {
   display: flex;
   align-items: center;
-  gap: 44px;
+  gap: 56px;
   height: 72px;
   transition: height 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
@@ -262,12 +262,17 @@ nav.scrolled .wrap { height: 58px; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 36px;
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-right: auto;
+  /* Span the remaining width so the CTA can be pushed to the far right,
+     instead of the whole bar bunching up on the left. */
+  flex: 1;
 }
+
+/* The CTA is always the last item — hold it hard right, clear of the menu */
+.nav-links > li:last-child { margin-left: auto; }
 
 .nav-links a {
   font-family: var(--font-body);
@@ -278,16 +283,27 @@ nav.scrolled .wrap { height: 58px; }
 .nav-links a:hover { color: var(--text); }
 .nav-links a .num { color: var(--text-faint); margin-right: 7px; font-size: 11px; }
 
+/* Primary action — filled, so it reads as a button rather than a
+   fourth menu item. Matches the hero CTA. */
 .nav-cta {
   font-family: var(--font-body);
   font-size: 13px;
-  padding: 9px 18px;
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
-  color: var(--text);
-  transition: border-color 0.2s, background 0.2s;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid var(--accent-deep);
+  border-radius: 5px;
+  background: var(--accent-deep);
+  color: #fff;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.nav-cta:hover { border-color: var(--accent); background: var(--accent-dim); }
+.nav-cta:hover {
+  background: #d64c26;
+  border-color: #d64c26;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px -6px rgba(196, 64, 32, 0.6);
+}
 
 .nav-toggle {
   display: none;
@@ -1475,10 +1491,19 @@ figure.shot figcaption {
   }
   .nav-links.open { display: flex; }
   .nav-links li { width: 100%; }
+  /* Undo the desktop right-push inside the stacked dropdown */
+  .nav-links > li:last-child { margin-left: 0; }
   .nav-links li a { display: block; padding: 13px 0; }
-  .nav-links .nav-cta { display: inline-block; margin-top: 10px; }
+  .nav-links .nav-cta {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    padding: 13px 20px;
+  }
   .nav-toggle { display: block; }
   nav .wrap { gap: 0; }
+  /* Dropdown hangs off the bar, which shrinks once scrolled */
+  nav.scrolled .nav-links { top: 58px; }
 
   .hero { padding: 76px 0 68px; }
   .hero h1 { max-width: none; }

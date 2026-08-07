@@ -7,6 +7,21 @@
   </url>
   <url>
     <loc>https://www.arshadhossain.com/about/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.arshadhossain.com/benchmarks/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.arshadhossain.com/benchmarks/click-to-messenger-ads-cost/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.arshadhossain.com/benchmarks/facebook-ads-cost-per-lead/</loc>
+    <lastmod>2026-08-07</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -131,18 +146,22 @@
   </url>
   <url>
     <loc>https://www.arshadhossain.com/services/</loc>
+    <lastmod>2026-08-07</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.arshadhossain.com/services/messenger-ads/</loc>
+    <lastmod>2026-08-07</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.arshadhossain.com/services/meta-ads-management/</loc>
+    <lastmod>2026-08-07</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.arshadhossain.com/services/seo/</loc>
+    <lastmod>2026-08-07</lastmod>
     <priority>0.5</priority>
   </url>
 </urlset>

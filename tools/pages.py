@@ -106,6 +106,48 @@ PAGES = {
         service_type="Search engine optimisation",
     ),
 
+    # ---- benchmarks: first-party data, the AI-citation play
+    "benchmarks/index.html": dict(
+        kind="hub",
+        title="Advertising Benchmarks From Real Client Accounts",
+        desc="First-party Meta Ads and SEO figures from accounts I managed directly, each linked to the dashboard screenshot it came from. Not an aggregate of other surveys.",
+        crumbs=[("Home", "")],
+    ),
+    "benchmarks/facebook-ads-cost-per-lead/index.html": dict(
+        kind="dataset",
+        title="Facebook Ads Cost Per Lead: 5 Real Client Accounts",
+        desc="Observed Meta cost per lead across five accounts I managed from 2023 to 2026 — $3.91 to $12.23 — with vertical, country, spend and sample size for each.",
+        crumbs=[("Home", ""), ("Benchmarks", "benchmarks/")],
+        modified="2026-08-07",
+        dataset_name="Facebook Ads cost per lead, 5 client accounts, 2023-2026",
+        coverage="2023/2026",
+        places=["United States"],
+        technique="Meta Ads Manager reporting, account level, USD",
+        variables=[
+            ("Cost per lead", "3.91", "Hair and scalp clinic, El Paso TX, 35 campaigns, down from $86"),
+            ("Cost per lead", "5.08", "B2B access solutions, Nevada, 64 leads, 63% below Meta benchmark"),
+            ("Cost per lead", "7.98", "Lending, US, part of 45 leads across two accounts"),
+            ("Cost per lead", "11.21", "Lease buyout, US, part of 45 leads across two accounts"),
+            ("Cost per lead", "12.23", "B2B merchandise, US, 64 leads in 7 days on $782.84"),
+        ],
+    ),
+    "benchmarks/click-to-messenger-ads-cost/index.html": dict(
+        kind="dataset",
+        title="Click-to-Messenger Ad Costs: $0.02 to $0.04 Per Chat",
+        desc="Click-to-Messenger costs from three campaigns run in Bangladesh in 2025, including one producing 12,813 conversations for $576.51 — and why they don't travel.",
+        crumbs=[("Home", ""), ("Benchmarks", "benchmarks/")],
+        modified="2026-08-07",
+        dataset_name="Click-to-Messenger conversation cost, 3 campaigns, Bangladesh, 2025",
+        coverage="2024/2025",
+        places=["Bangladesh"],
+        technique="Meta Ads Manager reporting, campaign level, USD",
+        variables=[
+            ("Cost per messaging conversation", "0.04", "Eid ul Adha campaign, 12,813 conversations on $576.51, 514,208 reach"),
+            ("Cost per messaging conversation", "0.03", "Eid message campaign, 16 creatives across 4 ad sets, $135.49 spend"),
+            ("Cost per messaging conversation", "0.02", "Best single ad set within the Eid message campaign"),
+        ],
+    ),
+
     # ---- conversion
     "free-audit/index.html": dict(
         kind="form",

@@ -147,6 +147,35 @@ def schema_for(path, meta, html_src=""):
                       "name": meta["title"], "description": meta["desc"],
                       "isPartOf": {"@id": WEBSITE_ID}})
         nodes.append(person_stub())
+    elif kind == "dataset":
+        # Dataset is a legitimate fit here and one of the few types with a
+        # genuine independent discovery surface. CC-BY invites republication
+        # *with attribution*, which is the off-site link pattern we want.
+        nodes.append({"@type": "Dataset", "@id": u + "#dataset",
+                      "name": meta["dataset_name"],
+                      "description": meta["desc"],
+                      "url": u,
+                      "creator": {"@id": PERSON_ID},
+                      "license": "https://creativecommons.org/licenses/by/4.0/",
+                      "isAccessibleForFree": True,
+                      "temporalCoverage": meta["coverage"],
+                      "spatialCoverage": [{"@type": "Place", "name": n}
+                                          for n in meta["places"]],
+                      "measurementTechnique": meta["technique"],
+                      "variableMeasured": [
+                          {"@type": "PropertyValue", "name": v[0], "value": v[1],
+                           "unitText": "USD", "description": v[2]}
+                          for v in meta["variables"]]})
+        nodes.append({"@type": "Article", "@id": u + "#article",
+                      "headline": meta["title"], "description": meta["desc"],
+                      "inLanguage": "en",
+                      "image": SITE + meta.get("image", "/og-default.png"),
+                      "author": {"@id": PERSON_ID},
+                      "publisher": {"@id": PERSON_ID},
+                      "isPartOf": {"@id": WEBSITE_ID},
+                      "dateModified": meta.get("modified"),
+                      "mainEntityOfPage": u})
+        nodes.append(person_stub())
     elif kind == "post":
         nodes.append({"@type": "BlogPosting", "@id": u + "#post",
                       "headline": meta["title"], "description": meta["desc"],
@@ -325,6 +354,9 @@ def lint():
         base = os.path.dirname(p)
         for attr, v in re.findall(r'\b(href|src)="([^"]*)"', s):
             if re.match(r'^(https?:|mailto:|#|data:|/)', v) or not v:
+                continue
+            v = v.split("#", 1)[0].split("?", 1)[0]   # fragment is not part of the path
+            if not v:
                 continue
             t_ = os.path.normpath(os.path.join(base, v)) if base else os.path.normpath(v)
             if not (os.path.isfile(t_) or

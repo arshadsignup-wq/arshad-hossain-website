@@ -3,228 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arshad Hossain · Meta Ads & SEO That Drive Revenue</title>
+<title>Arshad Hossain · Meta Ads &amp; SEO That Drive Revenue</title>
 <meta name="description" content="I've managed $250K+ in ad spend and cut cost-per-lead by up to 95%. Facebook Ads, Instagram Ads, and SEO for businesses in the US, Canada, Singapore, and Bangladesh.">
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style-v2.css">
 </head>
-<body class="home">
+<body>
 
 <nav>
   <div class="wrap">
+    <a href="index.html" class="nav-name">arshad<span>.hossain</span></a>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
         <line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>
       </svg>
     </button>
     <ul class="nav-links">
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="#path">Background</a></li>
-      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      <li><a href="case-studies.html"><span class="num">01</span>Case Studies</a></li>
+      <li><a href="projects.html"><span class="num">02</span>Projects</a></li>
+      <li><a href="blog.html"><span class="num">03</span>Blog</a></li>
+      <li><a href="free-audit.html" class="nav-cta">Get a free audit</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <p class="hero-sub">Arshad Hossain</p>
-        <h1>Your ads should make money,<br>not burn it.</h1>
-        <p class="hero-tagline">I run Facebook &amp; Instagram Ads and SEO campaigns that turn budgets into leads, sales, and repeat customers. 40+ businesses across four countries trust me with their growth.</p>
-        <div class="hero-stats">
-          <div>
-            <p class="hero-stat-num">$250K+</p>
-            <p class="hero-stat-label">Ad Spend Managed</p>
-          </div>
-          <div>
-            <p class="hero-stat-num">40+</p>
-            <p class="hero-stat-label">Clients Across 4 Countries</p>
-          </div>
-          <div>
-            <p class="hero-stat-num">95%</p>
-            <p class="hero-stat-label">CPL Reduction</p>
-          </div>
-        </div>
-        <div class="hero-ctas">
-          <a href="#contact" class="hero-btn-primary">Book a Free Strategy Call</a>
-          <a href="case-studies.html" class="hero-btn-secondary">See the Results &rarr;</a>
-        </div>
+  <div class="wrap hero-grid">
+   <div class="hero-copy">
+    <p class="status">Available for new clients — working globally</p>
+    <h1>Your ads should make money.<br><span class="accent">Your SEO should keep it coming.</span></h1>
+    <p class="hero-lede">Paid campaigns that turn budgets into leads and sales, and organic search that keeps them arriving after the ad spend stops. <strong>40+ businesses across four countries</strong> trust me with their growth.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <p class="hero-stat-num">$250K+</p>
+        <p class="hero-stat-label">Ad spend managed</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-num">40+</p>
+        <p class="hero-stat-label">Clients · 4 countries</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-num">95%</p>
+        <p class="hero-stat-label">Best CPL reduction</p>
       </div>
     </div>
+
+    <div class="hero-ctas">
+      <a href="free-audit.html" class="btn btn-primary">Get a free audit →</a>
+      <a href="case-studies.html" class="btn btn-ghost">See the results ↗</a>
+    </div>
+   </div>
+
+   <!-- Decorative results panel. Cycles through three real campaigns.
+        Every figure matches a published case study. -->
+   <div class="hero-viz" aria-hidden="true">
+     <div class="viz">
+       <div class="viz-card">
+         <div class="viz-head">
+           <span class="viz-dot"></span>
+           <span class="viz-src">Live campaign data</span>
+           <span class="viz-badge">REAL</span>
+         </div>
+
+         <div class="viz-stage">
+           <!-- 01 · Meta Ads -->
+           <div class="viz-slide is-on">
+             <p class="viz-label">Cost per lead</p>
+             <p class="viz-value"><span class="viz-num" data-from="86" data-to="3.91" data-dec="2" data-pre="$">$3.91</span></p>
+             <p class="viz-delta">↓ 95% &nbsp;from $86</p>
+             <svg class="viz-chart" viewBox="0 0 300 84" preserveAspectRatio="none">
+               <path class="viz-area" d="M0,10 L60,28 L120,24 L180,55 L240,64 L300,74 L300,84 L0,84 Z"/>
+               <path class="viz-line" d="M0,10 L60,28 L120,24 L180,55 L240,64 L300,74"/>
+             </svg>
+             <p class="viz-foot">The Scalp Shop · 35 campaigns</p>
+           </div>
+
+           <!-- 02 · Messenger -->
+           <div class="viz-slide">
+             <p class="viz-label">Message conversations</p>
+             <p class="viz-value"><span class="viz-num" data-from="0" data-to="12813" data-dec="0">12,813</span></p>
+             <p class="viz-delta">$0.04 &nbsp;each, on $576 spend</p>
+             <div class="viz-bars">
+               <i style="--h:22%"></i><i style="--h:34%"></i><i style="--h:29%"></i>
+               <i style="--h:48%"></i><i style="--h:61%"></i><i style="--h:55%"></i>
+               <i style="--h:78%"></i><i style="--h:100%"></i>
+             </div>
+             <p class="viz-foot">Wardrobe By Syra · Eid ul Adha</p>
+           </div>
+
+           <!-- 03 · SEO -->
+           <div class="viz-slide">
+             <p class="viz-label">Organic traffic</p>
+             <p class="viz-value"><span class="viz-num" data-from="0" data-to="75" data-dec="0" data-pre="+" data-suf="%">+75%</span></p>
+             <p class="viz-delta seo">↑ Page 1 &nbsp;in three months</p>
+             <svg class="viz-chart seo" viewBox="0 0 300 84" preserveAspectRatio="none">
+               <path class="viz-area" d="M0,76 L60,70 L120,54 L180,44 L240,24 L300,8 L300,84 L0,84 Z"/>
+               <path class="viz-line" d="M0,76 L60,70 L120,54 L180,44 L240,24 L300,8"/>
+             </svg>
+             <p class="viz-foot">Alami Clinic · Singapore</p>
+           </div>
+         </div>
+
+         <div class="viz-tabs">
+           <span class="is-on"></span><span></span><span></span>
+         </div>
+       </div>
+     </div>
+   </div>
+
   </div>
 </header>
 
-<!-- CASE STUDIES PREVIEW -->
-<section class="cases fade-in" id="work">
+<!-- WHAT I DO -->
+<section class="band reveal" id="services">
   <div class="wrap">
-    <div class="section-header">
-      <p class="section-label">Campaigns That Paid for Themselves</p>
-      <h2 class="section-title">Featured Work</h2>
-      <div class="section-rule"></div>
-      <p class="section-intro">Real numbers from real accounts. No mock-ups, no hypotheticals.</p>
+    <p class="eyebrow">What I do</p>
+    <div class="section-head">
+      <h2 class="section-title">Paid and organic, run by one person.</h2>
     </div>
 
-    <div class="featured-grid">
-      <a href="cases/scalp-shop.html" class="featured-card">
-        <p class="featured-card-num">01</p>
-        <h3 class="featured-card-client">The Scalp Shop</h3>
-        <p class="featured-card-type">Facebook Ads · El Paso, TX</p>
-        <p class="featured-card-result">Cost per lead went from $86 to $3.91 — a 95% drop across 35 campaigns.</p>
-        <span class="featured-card-cta">Read case study &rarr;</span>
-      </a>
-      <a href="cases/wardrobe-eid-adha.html" class="featured-card">
-        <p class="featured-card-num">03</p>
-        <h3 class="featured-card-client">Wardrobe By Syra</h3>
-        <p class="featured-card-type">Messenger Ads · Bangladesh</p>
-        <p class="featured-card-result">$576 spent. 12,813 message conversions. That's $0.04 per conversation.</p>
-        <span class="featured-card-cta">Read case study &rarr;</span>
-      </a>
-      <a href="cases/alami-clinic.html" class="featured-card">
-        <p class="featured-card-num">09</p>
-        <h3 class="featured-card-client">Alami Clinic</h3>
-        <p class="featured-card-type seo">Medical SEO · Singapore</p>
-        <p class="featured-card-result">Went from zero organic traffic to Page 1 on Google in three months.</p>
-        <span class="featured-card-cta">Read case study &rarr;</span>
-      </a>
-    </div>
-
-    <div class="featured-cta-wrap">
-      <a href="case-studies.html" class="featured-view-all">View all case studies &rarr;</a>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <p class="svc-num">01</p>
+        <h3 class="svc-name">Meta Ads Management</h3>
+        <p class="svc-desc">Full-funnel Facebook and Instagram advertising — targeting, creative, and daily optimisation that turns spend into revenue.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="svc-card">
+        <p class="svc-num">02</p>
+        <h3 class="svc-name">SEO &amp; Content Strategy</h3>
+        <p class="svc-desc">Technical fixes, keyword targeting, and content that ranks. Page 1 in competitive niches within months, not years.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="svc-card">
+        <p class="svc-num">03</p>
+        <h3 class="svc-name">Messenger &amp; Conversation Ads</h3>
+        <p class="svc-desc">Direct-to-inbox campaigns that start real conversations at a few cents each. My highest-volume channel by a distance.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="svc-card">
+        <p class="svc-num">04</p>
+        <h3 class="svc-name">Full-Funnel Strategy</h3>
+        <p class="svc-desc">Paid, organic, retargeting, and landing pages connected into one system so you stop losing people between click and purchase.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="svc-card">
+        <p class="svc-num">05</p>
+        <h3 class="svc-name">Analytics &amp; Tracking</h3>
+        <p class="svc-desc">Pixel and Conversions API set up properly, so the numbers you optimise against are the numbers actually happening.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
+      <div class="svc-card">
+        <p class="svc-num">06</p>
+        <h3 class="svc-name">Audits &amp; Consulting</h3>
+        <p class="svc-desc">One deep dive into where your ad account or SEO leaks money, with a clear action plan. Not a 50-page report you'll never read.</p>
+        <span class="svc-arrow">↗</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services fade-in" id="services">
+<!-- SELECTED WORK -->
+<section class="band reveal" id="work">
   <div class="wrap">
-    <div class="section-header">
-      <p class="section-label">How I Help</p>
-      <h2 class="section-title">Services</h2>
-      <div class="section-rule"></div>
+    <p class="eyebrow">Selected work</p>
+    <div class="section-head">
+      <h2 class="section-title">Campaigns that paid for themselves.</h2>
+      <a href="case-studies.html" class="section-link">All case studies ↗</a>
     </div>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">&#9733;</div>
-        <h3 class="service-name">Meta Ads Management</h3>
-        <p class="service-desc">Get more leads and sales from Facebook &amp; Instagram without wasting budget on guesswork. I handle targeting, creatives, Pixel setup, and daily optimization so your spend turns into revenue.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#9650;</div>
-        <h3 class="service-name">SEO &amp; Content Strategy</h3>
-        <p class="service-desc">Show up when your customers search for what you sell. Technical fixes, keyword targeting, and content that ranks — I've put clients on Page 1 in competitive niches within months.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#9679;</div>
-        <h3 class="service-name">Full-Funnel Strategy</h3>
-        <p class="service-desc">Stop losing people between first click and purchase. I connect paid ads, organic content, retargeting, and landing pages into one system that moves visitors to customers.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">&#9744;</div>
-        <h3 class="service-name">Audits &amp; Consulting</h3>
-        <p class="service-desc">Find out exactly where your ad account or SEO is leaking money. One-time deep dive with a clear action plan — not a 50-page report you'll never read.</p>
-      </div>
+    <div class="work-grid">
+      <a href="cases/scalp-shop.html" class="work-card">
+        <img src="cases/scalp-shop.png" alt="Meta Ads Manager dashboard for The Scalp Shop" class="work-shot" loading="lazy" width="1672" height="941">
+        <div class="work-body">
+          <p class="work-meta"><span class="num">01</span> Facebook Ads · El Paso, TX</p>
+          <h3 class="work-client">The Scalp Shop</h3>
+          <p class="work-result">Cost per lead went from $86 to <strong>$3.91</strong> — a 95% drop across 35 campaigns.</p>
+          <span class="work-cta">Read case study →</span>
+        </div>
+      </a>
+
+      <a href="cases/wardrobe-eid-adha.html" class="work-card">
+        <img src="cases/12813-message.png" alt="Messenger campaign results for Wardrobe By Syra" class="work-shot" loading="lazy" width="1142" height="518">
+        <div class="work-body">
+          <p class="work-meta"><span class="num">03</span> Messenger Ads · Bangladesh</p>
+          <h3 class="work-client">Wardrobe By Syra</h3>
+          <p class="work-result">$576 spent. <strong>12,813 message conversions.</strong> That's $0.04 per conversation.</p>
+          <span class="work-cta">Read case study →</span>
+        </div>
+      </a>
+
+      <a href="cases/alami-clinic.html" class="work-card">
+        <img src="cases/alami-clinic-1.png" alt="Google Search Console growth for Alami Clinic" class="work-shot" loading="lazy" width="1318" height="896">
+        <div class="work-body">
+          <p class="work-meta seo"><span class="num">10</span> Medical SEO · Singapore</p>
+          <h3 class="work-client">Alami Clinic</h3>
+          <p class="work-result">Zero organic traffic to <strong>Page 1 on Google</strong> in three months.</p>
+          <span class="work-cta">Read case study →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials fade-in" id="testimonials">
+<section class="band reveal" id="testimonials">
   <div class="wrap">
-    <div class="section-header">
-      <p class="section-label">In Their Words</p>
-      <h2 class="section-title">What Clients Say</h2>
-      <div class="section-rule"></div>
+    <p class="eyebrow">In their words</p>
+    <div class="section-head">
+      <h2 class="section-title">What clients say.</h2>
     </div>
 
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"We were paying $86 per lead before Arshad took over. Within weeks, that dropped to under $4. He treats our budget like it's his own money."</p>
-        <div class="testimonial-author">
-          <p class="testimonial-name">Michael R.</p>
-          <p class="testimonial-role">Owner, The Scalp Shop · El Paso, TX</p>
+    <div class="quotes">
+      <div class="quote">
+        <p class="quote-mark">"</p>
+        <p class="quote-text">We were paying $86 per lead before Arshad took over. Within weeks, that dropped to under $4. He treats our budget like it's his own money.</p>
+        <div class="quote-who">
+          <p class="quote-name">Michael R.</p>
+          <p class="quote-role">Owner, The Scalp Shop · El Paso, TX</p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"We had zero organic traffic when we started. Three months later, we were on Page 1 of Google. Arshad's approach was methodical and the results were measurable."</p>
-        <div class="testimonial-author">
-          <p class="testimonial-name">Dr. Amir H.</p>
-          <p class="testimonial-role">Director, Alami Clinic · Singapore</p>
+      <div class="quote">
+        <p class="quote-mark">"</p>
+        <p class="quote-text">We had zero organic traffic when we started. Three months later, we were on Page 1 of Google. Arshad's approach was methodical and the results were measurable.</p>
+        <div class="quote-who">
+          <p class="quote-name">Dr. Farhan</p>
+          <p class="quote-role">Owner, Alami Clinic · Singapore</p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"12,000+ messages at 4 cents each during Eid. Our inbox was so full we had to bring in extra staff to handle orders."</p>
-        <div class="testimonial-author">
-          <p class="testimonial-name">Syra K.</p>
-          <p class="testimonial-role">Founder, Wardrobe By Syra · Bangladesh</p>
+      <div class="quote">
+        <p class="quote-mark">"</p>
+        <p class="quote-text">12,000+ messages at 4 cents each during Eid. Our inbox was so full we had to bring in extra staff to handle orders.</p>
+        <div class="quote-who">
+          <p class="quote-name">Syra K.</p>
+          <p class="quote-role">Founder, Wardrobe By Syra · Bangladesh</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE PATH -->
-<section class="path fade-in" id="path">
+<!-- BACKGROUND -->
+<section class="band reveal" id="background">
   <div class="wrap">
-    <div class="section-header">
-      <p class="section-label">Background</p>
-      <h2 class="section-title">The Path</h2>
-      <div class="section-rule"></div>
+    <p class="eyebrow">Currently</p>
+    <div class="currently">
+      <div>
+        <h2>Digital Marketing Specialist at Sklentr.</h2>
+        <p>Running paid and organic campaigns for international clients in Singapore and Canada.</p>
+      </div>
+      <a href="case-studies.html" class="section-link">See the full path ↗</a>
     </div>
 
-    <div class="path-content">
-      <div class="path-text">
+    <div class="path-grid">
+      <div class="path-copy">
         <p>Marketing degree from <strong>BRAC University</strong>, Dhaka. Since 2020, I've managed <strong>$250K+ in Meta ad spend</strong> across <strong>40+ clients</strong> in the US, Canada, Singapore, and Bangladesh.</p>
         <p>Most of my work is <strong>Facebook and Instagram Ads</strong> — lead gen, e-commerce, Messenger campaigns. I've also ranked a Singapore medical clinic on Page 1 of Google, a Canadian fintech startup at #1 for their niche, and built organic authority for an agri-tech platform from zero.</p>
       </div>
-      <div>
-        <ul class="path-roles">
-          <li class="path-role">
-            <p class="path-role-title">Digital Presence Manager, David Albanese</p>
-            <p class="path-role-context">Fitness influencer, 2.3M followers · $500/day ad spend · 2024-2025</p>
-          </li>
-          <li class="path-role">
-            <p class="path-role-title">Marketing Consultant, IAH Marketing</p>
-            <p class="path-role-context">5+ US-based SME clients · Full-funnel campaigns · 2024</p>
-          </li>
-          <li class="path-role">
-            <p class="path-role-title">Digital Marketing Specialist, Sklentr</p>
-            <p class="path-role-context">International clients, Singapore & Canada · 2023-Present</p>
-          </li>
-          <li class="path-role">
-            <p class="path-role-title">Growth Strategist, Munchies</p>
-            <p class="path-role-context">Late-night delivery startup, Dhaka · 2022-2023</p>
-          </li>
-          <li class="path-role">
-            <p class="path-role-title">BBA in Marketing, BRAC University</p>
-            <p class="path-role-context">Dhaka, Bangladesh · 2016-2020</p>
-          </li>
-        </ul>
-      </div>
+
+      <ul class="roles">
+        <li class="role">
+          <div>
+            <p class="role-title">Digital Presence Manager, David Albanese</p>
+            <p class="role-where">Fitness influencer, 2.3M followers · $500/day ad spend</p>
+          </div>
+          <span class="role-year">2024—25</span>
+        </li>
+        <li class="role">
+          <div>
+            <p class="role-title">Marketing Consultant, IAH Marketing</p>
+            <p class="role-where">5+ US-based SME clients · Full-funnel campaigns</p>
+          </div>
+          <span class="role-year">2024</span>
+        </li>
+        <li class="role">
+          <div>
+            <p class="role-title">Digital Marketing Specialist, Sklentr</p>
+            <p class="role-where">International clients, Singapore &amp; Canada</p>
+          </div>
+          <span class="role-year">2023—</span>
+        </li>
+        <li class="role">
+          <div>
+            <p class="role-title">Growth Strategist, Munchies</p>
+            <p class="role-where">Late-night delivery startup, Dhaka</p>
+          </div>
+          <span class="role-year">2022—23</span>
+        </li>
+        <li class="role">
+          <div>
+            <p class="role-title">BBA in Marketing, BRAC University</p>
+            <p class="role-where">Dhaka, Bangladesh</p>
+          </div>
+          <span class="role-year">2016—20</span>
+        </li>
+      </ul>
     </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="band reveal" id="articles">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <div class="section-head">
+      <h2 class="section-title">Notes from live accounts.</h2>
+      <a href="blog.html" class="section-link">All articles ↗</a>
+    </div>
+
+    <div class="articles">
+      <a href="blog/local-seo-clinic-page-one.html" class="article">
+        <p class="article-cat">SEO</p>
+        <h3 class="article-title">From Zero Organic Traffic to Page 1 in Three Months</h3>
+        <p class="article-desc">What it actually took to rank a Singapore medical clinic — the order the work happened in, and realistic timelines for everyone else.</p>
+        <p class="article-meta">28 Jul 2026<span>·</span>10 min read</p>
+      </a>
+      <a href="blog/messenger-ads-bangladesh.html" class="article">
+        <p class="article-cat">Messenger Ads</p>
+        <h3 class="article-title">Why Click-to-Messenger Still Beats Conversion Ads in Bangladesh</h3>
+        <p class="article-desc">12,813 conversations on $576 of spend. Why conversational objectives win in F-commerce markets — and the four cases where they don't.</p>
+        <p class="article-meta">9 Jul 2026<span>·</span>7 min read</p>
+      </a>
+      <a href="blog/meta-ads-cost-per-lead.html" class="article">
+        <p class="article-cat">Meta Ads</p>
+        <h3 class="article-title">How I Cut a Cost Per Lead From $86 to $3.91</h3>
+        <p class="article-desc">A $50/day budget, 35 campaigns, a 95% reduction. The actual order I changed things in, including the two rounds that made it worse.</p>
+        <p class="article-meta">18 Jun 2026<span>·</span>9 min read</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING INSIGHTS -->
+<section class="insights reveal" id="insights">
+  <div class="wrap">
+    <p class="eyebrow">Follow along</p>
+    <h2>Marketing insights, straight from the field.</h2>
+    <p class="insights-sub">What's actually working in Meta Ads and SEO right now — posted from live client accounts, not recycled blog theory.</p>
+
+    <ul class="pills">
+      <li>Meta Ads</li>
+      <li>SEO &amp; Content</li>
+      <li>Messenger Ads</li>
+      <li>E-commerce</li>
+      <li>Lead Generation</li>
+      <li>Freelancing</li>
+    </ul>
+
+    <a href="https://www.linkedin.com/in/arshad-hossain-8a6241130/" class="btn btn-primary" target="_blank" rel="noopener">Follow on LinkedIn →</a>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact fade-in" id="contact">
+<section class="contact-band reveal" id="contact">
   <div class="wrap">
-    <div class="section-header">
-      <p class="section-label">Let's Talk</p>
-      <h2 class="section-title">Get in Touch</h2>
-      <div class="section-rule"></div>
-    </div>
-
+    <p class="eyebrow">Let's talk</p>
     <div class="contact-grid">
       <div>
-        <p class="contact-message">Spending money on ads that aren't converting? Competitors ranking above you on Google? Tell me what you're dealing with — I'll let you know if I can help and what it would look like.</p>
+        <h2>Find out where your budget is leaking.</h2>
+        <p class="contact-copy">Send me your ad account or your site and I'll tell you what's costing you money and what I'd change first. No pitch deck, no retainer talk — just the findings. If I can help beyond that, I'll say so.</p>
+        <p class="contact-direct">Want me to review the account properly first? Use the <a href="free-audit.html">free audit form</a> — it asks for what I need.</p>
       </div>
       <div>
-        <form class="contact-form" onsubmit="handleContact(event)">
-          <div><label for="c-name">Name</label><input type="text" id="c-name" name="name" placeholder="Your name" required></div>
-          <div><label for="c-email">Email</label><input type="email" id="c-email" name="email" placeholder="you@company.com" required></div>
-          <div class="full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" placeholder="What's the biggest marketing challenge you're facing right now?" required></textarea></div>
-          <button type="submit" class="contact-submit">Start the Conversation</button>
+        <form class="contact-form" action="https://formspree.io/f/xwlekjoj" method="POST" onsubmit="handleForm(event)">
+          <input type="hidden" name="_subject" value="Homepage contact — arshadhossain.com">
+          <div class="hp" aria-hidden="true">
+            <label for="h-gotcha">Leave this field empty</label>
+            <input type="text" id="h-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="field">
+            <label for="c-msg">Message</label>
+            <textarea id="c-msg" name="message" placeholder="What's the biggest marketing challenge you're facing right now?" required></textarea>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary">Send message →</button>
         </form>
       </div>
     </div>
@@ -233,44 +397,17 @@
 
 <footer>
   <div class="wrap">
-    <p class="footer-left">Arshad Hossain · 2026</p>
+    <p class="footer-left">© 2026 Arshad Hossain</p>
     <div class="footer-right">
-      <a href="mailto:smarshadhossain@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/arshad-hossain-8a6241130/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.upwork.com/freelancers/~01dafacb23c9b9555f" target="_blank" rel="noopener">Upwork</a>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html">Blog</a>
+      <a href="https://www.linkedin.com/in/arshad-hossain-8a6241130/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://www.upwork.com/freelancers/~01dafacb23c9b9555f" target="_blank" rel="noopener">Upwork ↗</a>
     </div>
   </div>
 </footer>
 
-<script>
-function handleContact(e) {
-  e.preventDefault();
-  var f = e.target;
-  var name = f.querySelector('#c-name').value;
-  var email = f.querySelector('#c-email').value;
-  var msg = f.querySelector('#c-msg').value;
-  window.location.href = 'mailto:smarshadhossain@gmail.com?subject=' +
-    encodeURIComponent('Website inquiry from ' + name) +
-    '&body=' + encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + msg);
-}
-
-// Fade-in on scroll
-(function() {
-  var els = document.querySelectorAll('.fade-in');
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(function(el) { el.classList.add('visible'); });
-    return;
-  }
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  els.forEach(function(el) { observer.observe(el); });
-})();
-</script>
+<script src="form.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Personal documents — not for publication
+Arshad Hossain_Updated Resume_2026.pdf
+*.pdf
+
+# Local machine settings (permissions allowlist, not shared config)
+.claude/settings.local.json
+
+# Research exports and working files, not site content
+*.csv

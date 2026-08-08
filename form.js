@@ -13,9 +13,15 @@ function handleForm(e) {
   btn.textContent = 'Sending…';
   status.className = 'form-status';
 
+  // Which page produced this lead. Without it there is no way to tell
+  // whether a service page, a case study or the blog is doing the work.
+  var data = new FormData(form);
+  data.append('page', window.location.pathname);
+  if (document.referrer) data.append('referrer', document.referrer);
+
   fetch(form.action, {
     method: 'POST',
-    body: new FormData(form),
+    body: data,
     headers: { 'Accept': 'application/json' }
   })
     .then(function (res) {

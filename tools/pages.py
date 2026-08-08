@@ -50,7 +50,7 @@ PAGES = {
     "cases/index.html": dict(
         kind="hub",
         title="Case Studies — Real Meta Ads & SEO Results",
-        desc="Documented campaigns across Meta Ads, Messenger and SEO. Every number comes from a real client account, with the dashboard screenshot behind it.",
+        desc="Documented campaigns across Meta Ads, Messenger and SEO. Every number comes from a real client account, with the reporting behind it.",
         crumbs=[("Home", "")],
     ),
     "blog/index.html": dict(
@@ -110,7 +110,7 @@ PAGES = {
     "benchmarks/index.html": dict(
         kind="hub",
         title="Advertising Benchmarks From Real Client Accounts",
-        desc="First-party Meta Ads and SEO figures from accounts I managed directly, each linked to the dashboard screenshot it came from. Not an aggregate of other surveys.",
+        desc="First-party Meta Ads and SEO figures from accounts I managed directly, each linked to the reporting it came from. Not an aggregate of other surveys.",
         crumbs=[("Home", "")],
     ),
     "benchmarks/facebook-ads-cost-per-lead/index.html": dict(
@@ -197,8 +197,8 @@ _CASES = [
      "Four campaigns for one Bangladeshi fashion brand: 12,813 Messenger conversations at $0.04, 121 purchases at $0.71, and a Reel that hit 333,110 views."),
     ("lending",              "45 Facebook Ads Leads at $7.98 and $11.21 CPL for a US Lender",
      "Two Facebook Ads lead gen campaigns for a US lending company: 45 leads at $7.98 and $11.21 cost per lead, with a 100/100 Meta Opportunity Score on both accounts."),
-    ("roofing",              "70 Roofing Leads on a $12,900 Facebook Ads Budget",
-     "A Facebook Ads lead generation campaign for a US roofing company: 70 leads from 36,218 reach and 75,232 impressions, still active and scaling."),
+    ("roofing",              "70 Roofing Leads at $66.60 Cost Per Lead",
+     "Facebook Ads for a US roofing company: 70 leads at $66.60 cost per lead — well under the $115+ published benchmark for the category. Campaign still running."),
     ("tombizmerch",          "64 B2B Leads in 7 Days at $12.23 Cost Per Lead",
      "Meta Ads for a FIFA World Cup merchandise store: 64 qualified B2B leads at $12.23 average cost per lead on $782.84 of spend, inside the first week of launch."),
     ("alami-clinic",         "Zero to Page 1 in Three Months: Medical SEO in Singapore",

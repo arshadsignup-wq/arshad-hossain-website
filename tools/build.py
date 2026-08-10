@@ -18,11 +18,30 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 os.chdir(ROOT)
 
-from pages import PAGES, SITE, AUTHOR, IDENTITY, SAME_AS  # noqa: E402
+from pages import PAGES, SITE, AUTHOR, IDENTITY, SAME_AS, GA_ID  # noqa: E402
 
 START, END = "<!-- SEO:START -->", "<!-- SEO:END -->"
+GA_START, GA_END = "<!-- GA:START -->", "<!-- GA:END -->"
 PERSON_ID = f"{SITE}/#arshad"
 WEBSITE_ID = f"{SITE}/#website"
+
+
+def ga_block():
+    """Google Analytics 4. Google asks for this immediately after <head>,
+    so it is a separate marker pair from the SEO block, which sits at the
+    end of <head>. Set GA_ID to None in pages.py to remove it everywhere."""
+    if not GA_ID:
+        return None
+    return (f"{GA_START}\n"
+            "<!-- Google tag (gtag.js) -->\n"
+            f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n'
+            "<script>\n"
+            "  window.dataLayer = window.dataLayer || [];\n"
+            "  function gtag(){dataLayer.push(arguments);}\n"
+            "  gtag('js', new Date());\n\n"
+            f"  gtag('config', '{GA_ID}');\n"
+            "</script>\n"
+            f"{GA_END}")
 
 
 # ----------------------------------------------------------------- helpers
@@ -256,13 +275,34 @@ def head_block(path, meta, html_src=""):
     return "\n".join(L)
 
 
+def inject_ga(s, check=False):
+    """Returns (new_source, changed). Sits immediately after <head>."""
+    want = ga_block()
+    has = GA_START in s and GA_END in s
+    if want is None:
+        if not has:
+            return s, False
+        cur = s[s.index(GA_START): s.index(GA_END) + len(GA_END)]
+        return (s if check else s.replace(cur + "\n", "").replace(cur, "")), True
+    if has:
+        cur = s[s.index(GA_START): s.index(GA_END) + len(GA_END)]
+        if cur == want:
+            return s, False
+        return (s if check else s.replace(cur, want)), True
+    m = re.search(r'<head>', s)
+    if not m:
+        return s, False
+    return (s if check else s[:m.end()] + "\n" + want + s[m.end():]), True
+
+
 def inject(path, meta, check=False):
     s = read(path)
+    s, ga_changed = inject_ga(s, check)
     block = head_block(path, meta, s)
 
     if START in s and END in s:
         cur = s[s.index(START): s.index(END) + len(END)]
-        if cur == block:
+        if cur == block and not ga_changed:
             return False
         if check:
             return True

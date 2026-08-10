@@ -18,6 +18,10 @@ Fields
 """
 
 SITE = "https://www.arshadhossain.com"
+
+# Google Analytics 4 measurement ID. Set to None to strip the tag from
+# every page in one run.
+GA_ID = "G-9K49EJGCFB"
 AUTHOR = "Arshad Hossain"
 
 # The identity statement. One string, used everywhere, so the entity

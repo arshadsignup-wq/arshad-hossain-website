@@ -41,7 +41,7 @@ PROJECTS = "projects/"
 PAGES = {
     "index.html": dict(
         kind="home",
-        title="Arshad Hossain — Freelance Meta Ads & SEO Specialist",
+        title="Arshad Hossain · Freelance Meta Ads & SEO Specialist",
         desc="Independent Meta Ads and SEO specialist. $250K+ in ad spend managed across 40+ accounts for clients in the US, Canada and Singapore. Cost per lead cut by up to 95%.",
         crumbs=[],
     ),
@@ -49,19 +49,19 @@ PAGES = {
     # ---- hubs
     "cases/index.html": dict(
         kind="hub",
-        title="Case Studies — Real Meta Ads & SEO Results",
+        title="Case Studies · Real Meta Ads & SEO Results",
         desc="Documented campaigns across Meta Ads, Messenger and SEO. Every number comes from a real client account, with the reporting behind it.",
         crumbs=[("Home", "")],
     ),
     "blog/index.html": dict(
         kind="hub",
-        title="Blog — Notes From Live Meta Ads & SEO Accounts",
+        title="Blog · Notes From Live Meta Ads & SEO Accounts",
         desc="Long-form breakdowns of real campaigns: what worked, what didn't, and the numbers behind both. Written from accounts I ran myself.",
         crumbs=[("Home", "")],
     ),
     "projects/index.html": dict(
         kind="hub",
-        title="Projects — Tools I Built With AI",
+        title="Projects · Tools I Built With AI",
         desc="Side projects built to solve real problems: civic accountability, parenting tools, invoice generation, and an AI prompt library.",
         crumbs=[("Home", "")],
     ),
@@ -69,7 +69,7 @@ PAGES = {
     # ---- entity anchor
     "about/index.html": dict(
         kind="about",
-        title="About Arshad Hossain — Meta Ads & SEO Freelancer",
+        title="About Arshad Hossain · Meta Ads & SEO Freelancer",
         desc="Independent Meta Ads and SEO specialist based in Dhaka, Bangladesh, working with clients in the US, Canada and Singapore. $250K+ ad spend managed since 2020.",
         crumbs=[("Home", "")],
     ),
@@ -77,7 +77,7 @@ PAGES = {
     # ---- services
     "services/index.html": dict(
         kind="hub",
-        title="Services — Freelance Meta Ads & SEO",
+        title="Services · Freelance Meta Ads & SEO",
         desc="Meta Ads, click-to-Messenger campaigns and SEO, run by one freelancer. How engagements work, what's included, what isn't, and the evidence for each.",
         crumbs=[("Home", "")],
     ),
@@ -116,7 +116,7 @@ PAGES = {
     "benchmarks/facebook-ads-cost-per-lead/index.html": dict(
         kind="dataset",
         title="Facebook Ads Cost Per Lead: 5 Real Client Accounts",
-        desc="Observed Meta cost per lead across five accounts I managed from 2023 to 2026 — $3.91 to $12.23 — with vertical, country, spend and sample size for each.",
+        desc="Observed Meta cost per lead across five accounts I managed from 2023 to 2026, ranging $3.91 to $12.23, with vertical, country, spend and sample size.",
         crumbs=[("Home", ""), ("Benchmarks", "benchmarks/")],
         modified="2026-08-07",
         dataset_name="Facebook Ads cost per lead, 5 client accounts, 2023-2026",
@@ -134,7 +134,7 @@ PAGES = {
     "benchmarks/click-to-messenger-ads-cost/index.html": dict(
         kind="dataset",
         title="Click-to-Messenger Ad Costs: $0.02 to $0.04 Per Chat",
-        desc="Click-to-Messenger costs from three campaigns run in Bangladesh in 2025, including one producing 12,813 conversations for $576.51 — and why they don't travel.",
+        desc="Click-to-Messenger costs from three campaigns run in Bangladesh in 2025, including one producing 12,813 conversations for $576.51. Plus why they don't travel.",
         crumbs=[("Home", ""), ("Benchmarks", "benchmarks/")],
         modified="2026-08-07",
         dataset_name="Click-to-Messenger conversation cost, 3 campaigns, Bangladesh, 2025",
@@ -151,13 +151,13 @@ PAGES = {
     # ---- conversion
     "free-audit/index.html": dict(
         kind="form",
-        title="Free Facebook Ads & SEO Audit — No Cost, No Pitch",
+        title="Free Facebook Ads & SEO Audit · No Cost, No Pitch",
         desc="Send me your ad account or your site. I'll review it before we speak and come back with what's costing you money and what I'd change first. No cost.",
         crumbs=[("Home", "")],
     ),
     "contact/index.html": dict(
         kind="form",
-        title="Contact Arshad Hossain — Meta Ads & SEO Freelancer",
+        title="Contact Arshad Hossain · Meta Ads & SEO Freelancer",
         desc="Ask a question, or tell me what isn't working in your ads or your search rankings. I reply within one business day.",
         crumbs=[("Home", "")],
     ),
@@ -166,21 +166,21 @@ PAGES = {
     "blog/meta-ads-cost-per-lead/index.html": dict(
         kind="post",
         title="How I Cut a Facebook Ads Cost Per Lead From $86 to $3.91",
-        desc="How I took a US hair clinic's Facebook Ads cost per lead down 95% across 35 campaigns — what I changed, in what order, and the two rounds that made it worse.",
+        desc="How I took a US hair clinic's Facebook Ads cost per lead down 95% across 35 campaigns: what I changed, in what order, and the two rounds that made it worse.",
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-06-18", modified="2026-07-30",
     ),
     "blog/messenger-ads-bangladesh/index.html": dict(
         kind="post",
         title="Why Click-to-Messenger Beats Conversion Ads in Bangladesh",
-        desc="12,813 Messenger conversations on $576 of spend, four cents each. Why conversational objectives win in F-commerce markets — and the four cases where they don't.",
+        desc="12,813 Messenger conversations on $576 of spend, four cents each. Why conversational objectives win in F-commerce markets, and the four cases where they don't.",
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-07-09", modified="2026-07-09",
     ),
     "blog/local-seo-clinic-page-one/index.html": dict(
         kind="post",
         title="Ranking a Medical Clinic on Page 1 in Three Months",
-        desc="What it actually took to rank a Singapore clinic from zero organic traffic — the order of work, why healthcare SEO has a higher bar, and realistic timelines.",
+        desc="What it actually took to rank a Singapore clinic from zero organic traffic: the order of work, why healthcare SEO has a higher bar, and realistic timelines.",
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-07-28", modified="2026-07-28",
     ),
@@ -190,15 +190,15 @@ PAGES = {
 #      targets a name nobody searches.
 _CASES = [
     ("scalp-shop",           "$86 to $3.91 Cost Per Lead: Facebook Ads for a US Hair Clinic",
-     "How 35 Facebook Ads campaigns took a US hair and scalp clinic's cost per lead from $86 to $3.91 — a 95% reduction, with a 94/100 Meta Opportunity Score."),
+     "How 35 Facebook Ads campaigns took a US hair and scalp clinic's cost per lead from $86 to $3.91, a 95% reduction, with a 94/100 Meta Opportunity Score."),
     ("nevada",               "$5.08 B2B Cost Per Lead: Facebook Ads for Nevada Access",
-     "A full-funnel B2B Facebook Ads campaign producing 64 leads at $5.08 each — 63% below Meta's own benchmark — on a $100 awareness spend reaching 43,927 people."),
+     "A full-funnel B2B Facebook Ads campaign producing 64 leads at $5.08 each, 63% below Meta's own benchmark, on a $100 awareness spend reaching 43,927 people."),
     ("wardrobe-by-syra",     "Wardrobe By Syra: 4 Meta Campaigns, 4 Objectives",
      "Four campaigns for one Bangladeshi fashion brand: 12,813 Messenger conversations at $0.04, 121 purchases at $0.71, and a Reel that hit 333,110 views."),
     ("lending",              "45 Facebook Ads Leads at $7.98 and $11.21 CPL for a US Lender",
      "Two Facebook Ads lead gen campaigns for a US lending company: 45 leads at $7.98 and $11.21 cost per lead, with a 100/100 Meta Opportunity Score on both accounts."),
     ("roofing",              "70 Roofing Leads at $66.60 Cost Per Lead",
-     "Facebook Ads for a US roofing company: 70 leads at $66.60 cost per lead — well under the $115+ published benchmark for the category. Campaign still running."),
+     "Facebook Ads for a US roofing company: 70 leads at $66.60 cost per lead, well under the $115+ published benchmark for the category. Campaign still running."),
     ("tombizmerch",          "64 B2B Leads in 7 Days at $12.23 Cost Per Lead",
      "Meta Ads for a FIFA World Cup merchandise store: 64 qualified B2B leads at $12.23 average cost per lead on $782.84 of spend, inside the first week of launch."),
     ("alami-clinic",         "Zero to Page 1 in Three Months: Medical SEO in Singapore",
@@ -206,7 +206,7 @@ _CASES = [
     ("gettakaful",           'Fintech SEO: #1 for "Takaful Insurance in Canada"',
      "SEO for a Canadian Islamic insurance startup: #1 rankings for \"takaful insurance in canada\" and \"shariah insurance in canada\" through a blog-driven content strategy."),
     ("aifarming",            'AgriTech SEO: Page 1 for "AI in Home Farming" in Toronto',
-     'SEO for a Toronto AgriTech platform: Page 1 for "AI in home farming", plus rankings across balcony gardening and crop-growth queries — topic authority from zero.'),
+     'SEO for a Toronto AgriTech platform: Page 1 for "AI in home farming", plus rankings across balcony gardening and crop-growth queries. Topic authority from zero.'),
 ]
 for slug, title, desc in _CASES:
     PAGES[f"cases/{slug}/index.html"] = dict(
@@ -215,13 +215,13 @@ for slug, title, desc in _CASES:
     )
 
 _PROJECTS = [
-    ("daag",               "Daag — Civic Accountability Archive",
+    ("daag",               "Daag · Civic Accountability Archive",
      "A crowdsourced platform documenting misogynistic online commentary in Bangladesh, with evidence submission, a moderation system and a searchable archive."),
-    ("ismybabyalright",    "Is My Baby Alright? — Parenting Companion App",
+    ("ismybabyalright",    "Is My Baby Alright? · Parenting Companion App",
      "A parenting app with milestone tracking, symptom triage, sleep logs, growth charts and mental health screening, built after becoming a father."),
-    ("quillbill",          "QuillBill — Free Invoice & Proposal Generator",
+    ("quillbill",          "QuillBill · Free Invoice & Proposal Generator",
      "A free invoice and proposal generator: 15+ templates, PDF export, shareable links and multi-currency support, with no account required."),
-    ("prompt-black-magic", "Prompt Black Magic — AI Prompt Library for Marketers",
+    ("prompt-black-magic", "Prompt Black Magic · AI Prompt Library for Marketers",
      "100+ curated AI prompts for Google Ads, SEO, social media, email marketing and productivity, with search, filter and one-click copy."),
 ]
 for slug, title, desc in _PROJECTS:

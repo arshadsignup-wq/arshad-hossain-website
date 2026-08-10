@@ -67,7 +67,7 @@ def breadcrumbs(meta, path):
         items.append({"@type": "ListItem", "position": i, "name": label,
                       "item": f"{SITE}/{rel}"})
     items.append({"@type": "ListItem", "position": len(items) + 1,
-                  "name": meta["title"].split(" — ")[0].split(" &middot; ")[0]})
+                  "name": meta["title"].split(" · ")[0].split(" &middot; ")[0]})
     return {"@type": "BreadcrumbList",
             "@id": url_for(path) + "#breadcrumb", "itemListElement": items}
 
@@ -119,7 +119,7 @@ def schema_for(path, meta, html_src=""):
 
     if kind == "home":
         nodes.append({"@type": "WebSite", "@id": WEBSITE_ID, "url": f"{SITE}/",
-                      "name": f"{AUTHOR} — Meta Ads & SEO",
+                      "name": f"{AUTHOR} · Meta Ads & SEO",
                       "inLanguage": "en",
                       "publisher": {"@id": PERSON_ID}})
         nodes.append({"@type": "WebPage", "@id": u + "#page", "url": u,

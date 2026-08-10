@@ -11,3 +11,8 @@ Arshad Hossain_Updated Resume_2026.pdf
 
 # Research exports and working files, not site content
 *.csv
+
+# Keyword research working notes, not site content
+keyword-seeds.md
+keyword-seeds-plain.txt
+keyword-seeds-batch*.txt

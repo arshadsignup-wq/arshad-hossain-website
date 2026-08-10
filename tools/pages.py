@@ -103,8 +103,8 @@ PAGES = {
     ),
     "services/seo/index.html": dict(
         kind="service",
-        title="SEO for Clinics, Fintech and Niche B2B",
-        desc="SEO for categories where trust decides the ranking: technical foundations, Google Business Profile work and credible content. Zero to Page 1 in three months.",
+        title="SEO Services · Rankings That Bring Customers",
+        desc="Freelance SEO across industries: technical foundations, Google Business Profile work and content that ranks. Documented zero to Page 1 in three months.",
         crumbs=[("Home", ""), ("Services", "services/")],
         service_name="SEO and Content Strategy",
         service_type="Search engine optimisation",

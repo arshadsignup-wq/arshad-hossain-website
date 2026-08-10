@@ -82,7 +82,7 @@ PAGES = {
     "services/index.html": dict(
         kind="hub",
         title="Services · Freelance Meta Ads & SEO",
-        desc="Meta Ads, click-to-Messenger campaigns and SEO, run by one freelancer. How engagements work, what's included, what isn't, and the evidence for each.",
+        desc="Meta Ads, click-to-Messenger campaigns and SEO. How engagements work, what's included, what isn't, and the evidence behind each service.",
         crumbs=[("Home", "")],
     ),
     "services/meta-ads-management/index.html": dict(

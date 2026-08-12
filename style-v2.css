@@ -9,31 +9,35 @@
   /* Two faces only, site-wide. Geist sets every heading and display
      number; Hanken Grotesk does everything else, including the small
      uppercase labels that used to be monospace. */
-  --font-display: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Surfaces — near-black, warmed slightly so it never reads blue */
-  --bg: #0b0b0c;
-  --bg-raise: #111113;
-  --bg-raise-2: #161618;
-  --line: rgba(255, 255, 255, 0.07);
-  --line-strong: rgba(255, 255, 255, 0.14);
+  /* Surfaces — warm paper, not white. Cards lift toward white, bands sink. */
+  --bg: #f7f4ef;
+  --bg-raise: #fffdfa;
+  --bg-raise-2: #efeae1;
+  --line: rgba(22, 19, 15, 0.10);
+  --line-strong: rgba(22, 19, 15, 0.20);
 
-  /* Text — warm off-white, not pure #fff */
-  --text: #ece9e5;
-  --text-mid: #9c9791;
-  --text-faint: #6d6a66;
+  /* Ink — warm near-black, never pure. Every value below clears WCAG AA
+     (4.5:1) on both --bg and --bg-raise-2, measured, not estimated. */
+  --text: #16130f;        /* 16.88:1 */
+  --text-mid: #57514a;    /*  7.14:1 */
+  --text-faint: #6f675d;  /*  5.07:1 */
 
-  /* Accent — vermillion, lifted for legibility on near-black.
-     --accent-deep is the original brand value, used behind white text. */
-  --accent: #e0673f;
-  --accent-deep: #c44020;
-  --accent-dim: rgba(224, 103, 63, 0.14);
-  --accent-line: rgba(224, 103, 63, 0.3);
+  /* Accent — the two vermillions INVERT on paper. #c44020, the original
+     brand value that failed as text on near-black, is the correct one here
+     (4.67:1). The lifted #e0673f drops to 3.10:1 and is large-display only,
+     so it survives inside the dark hero panel and nowhere else. */
+  --accent: #c44020;
+  --accent-deep: #b5391b;
+  --accent-lift: #e0673f;
+  --accent-dim: rgba(196, 64, 32, 0.09);
+  --accent-line: rgba(196, 64, 32, 0.30);
 
-  /* SEO cases read green, also lifted for dark */
-  --green: #4ba777;
-  --green-dim: rgba(75, 167, 119, 0.13);
+  /* SEO green, darkened for paper — #4ba777 was 2.70:1 here and failed. */
+  --green: #2f7d54;
+  --green-dim: rgba(47, 125, 84, 0.11);
 
   --wrap: 1220px;
   --gutter: 32px;
@@ -80,7 +84,7 @@
   --lh-display: 1.05;
   --lh-tight: 1.25;
   --lh-body: 1.65;
-  --tr-display: -0.032em;
+  --tr-display: -0.013em;
   --tr-tight: -0.02em;
   --tr-caps: 0.16em;
 
@@ -284,7 +288,7 @@ a { color: inherit; text-decoration: none; }
 .section-title {
   font-size: var(--fs-display-3);
   line-height: 1.03;
-  letter-spacing: -0.032em;
+  letter-spacing: -0.013em;
   font-weight: 700;
   margin: 0;
   max-width: 20ch;
@@ -316,7 +320,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11, 11, 12, 0.78);
+  background: rgba(247, 244, 239, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
@@ -324,7 +328,7 @@ nav {
 }
 /* Condenses once you start scrolling */
 nav.scrolled {
-  background: rgba(11, 11, 12, 0.94);
+  background: rgba(247, 244, 239, 0.95);
   border-bottom-color: var(--line-strong);
 }
 
@@ -396,8 +400,8 @@ nav.scrolled .wrap { height: 58px; }
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .nav-cta:hover {
-  background: #d64c26;
-  border-color: #d64c26;
+  background: #a63417;
+  border-color: #a63417;
   color: #fff;
   transform: translateY(-1px);
   box-shadow: 0 6px 18px -6px rgba(196, 64, 32, 0.6);
@@ -430,7 +434,7 @@ nav.scrolled .wrap { height: 58px; }
   right: -180px;
   width: 900px;
   height: 760px;
-  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.17), transparent 66%);
+  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.055), transparent 66%);
   pointer-events: none;
   z-index: 0;
   animation: drift 20s ease-in-out infinite;
@@ -479,6 +483,22 @@ nav.scrolled .wrap { height: 58px; }
   50%      { translate: 0 -16px; }
 }
 
+/* The live-campaign panel stays dark on the paper page — it is the one
+   inverted element, and an editorial layout wants exactly one. Redefining
+   the tokens here re-scopes every child (.viz-value, .viz-label, .viz-line,
+   the bars, the badge) without touching any of their rules. */
+.viz-card {
+  --text: #f7f4ef;
+  --text-mid: #b8b1a7;
+  --text-faint: #948b7f;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.17);
+  --accent: #e0673f;          /* 5.45:1 on the dark card */
+  --accent-deep: #c44020;
+  --accent-line: rgba(224, 103, 63, 0.38);
+  --green: #4ba777;
+}
+
 .viz-card {
   background: linear-gradient(160deg, #17171a 0%, #101012 62%);
   border: 1px solid var(--line-strong);
@@ -486,7 +506,7 @@ nav.scrolled .wrap { height: 58px; }
   padding: 20px 22px 18px;
   box-shadow:
     0 40px 80px -24px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 1px 0 rgba(22, 19, 15, 0.05);
 }
 
 .viz-head {
@@ -550,7 +570,7 @@ nav.scrolled .wrap { height: 58px; }
   font-family: var(--font-display);
   font-size: var(--fs-6xl);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.016em;
   line-height: 1;
   color: var(--text);
   margin: 0 0 10px;
@@ -656,7 +676,7 @@ nav.scrolled .wrap { height: 58px; }
      without wrapping to a third down to ~1100px. */
   font-size: var(--fs-display-1);
   line-height: 1.06;
-  letter-spacing: -0.034em;
+  letter-spacing: -0.014em;
   font-weight: 700;
   margin: 0 0 34px;
 }
@@ -691,7 +711,7 @@ nav.scrolled .wrap { height: 58px; }
 .hero-stat-num {
   font-size: var(--fs-5xl);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   color: var(--accent);
   margin: 0 0 4px;
   line-height: 1;
@@ -730,7 +750,7 @@ nav.scrolled .wrap { height: 58px; }
   border-color: var(--accent-deep);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
 }
-.btn-primary:hover { background: #d64c26; border-color: #d64c26; transform: translateY(-1px); }
+.btn-primary:hover { background: #a63417; border-color: #a63417; transform: translateY(-1px); }
 .btn-ghost { border-color: var(--line-strong); color: var(--text); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -864,7 +884,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   border-bottom: 1px dashed var(--line-strong);
   transition: background 0.22s;
 }
-.svc-card:hover { background: rgba(255, 255, 255, 0.02); }
+.svc-card:hover { background: rgba(22, 19, 15, 0.025); }
 
 .svc-icon {
   width: 42px;
@@ -925,7 +945,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   border-bottom: 1px solid var(--line);
   transition: background 0.2s;
 }
-.article:hover { background: rgba(255, 255, 255, 0.016); }
+.article:hover { background: rgba(22, 19, 15, 0.02); }
 
 .article-cat {
   font-family: var(--font-body);
@@ -977,7 +997,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .insights h2 {
   font-size: var(--fs-display-3);
   line-height: 1.06;
-  letter-spacing: -0.032em;
+  letter-spacing: -0.013em;
   font-weight: 700;
   margin: 0 auto 20px;
   max-width: 20ch;
@@ -1086,7 +1106,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 }
 .currently h2 {
   font-size: var(--fs-display-4);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   line-height: 1.1;
   font-weight: 700;
   margin: 0 0 12px;
@@ -1136,7 +1156,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   transform: translateX(-50%);
   width: 900px;
   height: 620px;
-  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.15), transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.05), transparent 68%);
   pointer-events: none;
 }
 .contact-band .wrap { position: relative; z-index: 1; }
@@ -1150,7 +1170,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .contact-grid h2 {
   font-size: var(--fs-display-3);
   line-height: 1.04;
-  letter-spacing: -0.032em;
+  letter-spacing: -0.013em;
   font-weight: 700;
   margin: 0 0 20px;
   max-width: 14ch;
@@ -1248,14 +1268,14 @@ footer .wrap {
   right: -160px;
   width: 820px;
   height: 700px;
-  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.14), transparent 66%);
+  background: radial-gradient(ellipse at center, rgba(196, 64, 32, 0.045), transparent 66%);
   pointer-events: none;
 }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 {
   font-size: var(--fs-display-2);
   line-height: 1.04;
-  letter-spacing: -0.034em;
+  letter-spacing: -0.014em;
   font-weight: 700;
   margin: 0 0 20px;
   max-width: 18ch;
@@ -1285,7 +1305,7 @@ footer .wrap {
 .post-head h1 {
   font-size: var(--fs-display-3);
   line-height: 1.07;
-  letter-spacing: -0.034em;
+  letter-spacing: -0.014em;
   font-weight: 700;
   margin: 0 0 22px;
 }
@@ -1327,7 +1347,7 @@ footer .wrap {
 .prose h2 {
   font-size: var(--fs-display-5);
   line-height: 1.15;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   font-weight: 700;
   color: var(--text);
   margin: 56px 0 18px;
@@ -1455,7 +1475,7 @@ footer .wrap {
   font-family: var(--font-display);
   font-size: var(--fs-4xl);
   font-weight: 700;
-  letter-spacing: -0.032em;
+  letter-spacing: -0.013em;
   line-height: 1;
   color: var(--accent);
   margin: 0 0 7px;
@@ -1525,7 +1545,7 @@ figure.shot figcaption {
 .faq > h2 {
   font-family: var(--font-display);
   font-size: var(--fs-display-5);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   font-weight: 700;
   margin: 0 0 8px;
 }
@@ -1597,7 +1617,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 .form-aside h2 {
   font-size: var(--fs-display-4);
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.012em;
   margin: 0 0 18px;
 }
 .form-aside > p { color: var(--text-mid); margin: 0 0 34px; }

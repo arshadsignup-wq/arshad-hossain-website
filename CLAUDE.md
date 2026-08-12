@@ -59,9 +59,12 @@ Each keeps a real `action`/`method` so it works with JS off; `form.js` intercept
 ## Conventions
 
 - **Nav and footer are duplicated in every HTML file** — no includes. A change to either must be applied everywhere, at the correct path depth.
-- **Two vermillions.** `--accent` (`#e0673f`) for text and accents on dark; `--accent-deep` (`#c44020`, the original brand value) only behind white button text. The original fails contrast as text on near-black — don't swap them.
+- **Two vermillions, and they inverted with the light redesign.** On paper `--accent` is `#c44020` (4.67:1) and is the text accent; `--accent-lift` (`#e0673f`) measures 3.10:1 here and is large-display only, surviving inside the dark hero panel and nowhere else. This is the reverse of the old dark site, where `#e0673f` was the text value. Don't swap them back without re-measuring.
 - **`.prose a` needs `:not(.btn)`.** `.prose a` outranks `.btn-primary` on specificity, so without the exclusion the CTA inside a post renders accent-on-accent and the label disappears.
-- **Fonts: Geist (headings and display numbers) and Hanken Grotesk (everything else).** Only these two, site-wide.
+- **Fonts: Fraunces (display serif, headings and figures) and Inter Tight (everything else).** Only these two, site-wide. Fraunces is a serif, so display tracking sits near `-0.013em`; the old `-0.032em` was tuned for Geist and closes a serif up too much.
+- **The site is light.** Warm paper (`--bg: #f7f4ef`) with warm near-black ink. Every text token clears WCAG AA on both `--bg` and `--bg-raise-2`; the values are measured, not estimated, so re-check with a contrast calculation before changing one.
+- **The hero data panel is the one inverted element.** `.viz-card` redefines the colour tokens locally to dark, which re-scopes every child without touching their rules. An editorial layout wants exactly one inverted block — don't add a second.
+- **Blog figures and `og-default.png` are generated, not photographed.** They were rebuilt on paper; if the palette changes again they must be re-rendered or they revert to dark blocks on a light page.
 - **Never write a literal `font-size`.** Every one is a token in `:root` — five `--fs-display-*` steps, `--fs-2xs`…`--fs-2xl` for text, `--fs-3xl`…`--fs-6xl` for display numbers. The file previously carried 34 ad-hoc sizes (including `0.94`/`0.95`/`0.96`/`0.97rem`, four values inside half a pixel of each other) and nine separate heading `clamp()` curves. If nothing fits, the right move is to question the design, not to add a 35th value.
 - **Spacing uses the `--sp-*` scale** (4px base). Section rhythm is `--section-y`, which is fluid — it was a flat `128px`, doubling to 256px of dead space between every pair of sections.
 - **`.metric-value.seo` is a standalone modifier.** The parent-scoped `.metric.seo .metric-value` does not reach `.proof-cell`, which is not a `.metric`.

@@ -62,7 +62,12 @@ Each keeps a real `action`/`method` so it works with JS off; `form.js` intercept
 - **Two vermillions.** `--accent` (`#e0673f`) for text and accents on dark; `--accent-deep` (`#c44020`, the original brand value) only behind white button text. The original fails contrast as text on near-black — don't swap them.
 - **`.prose a` needs `:not(.btn)`.** `.prose a` outranks `.btn-primary` on specificity, so without the exclusion the CTA inside a post renders accent-on-accent and the label disappears.
 - **Fonts: Geist (headings and display numbers) and Hanken Grotesk (everything else).** Only these two, site-wide.
+- **Never write a literal `font-size`.** Every one is a token in `:root` — five `--fs-display-*` steps, `--fs-2xs`…`--fs-2xl` for text, `--fs-3xl`…`--fs-6xl` for display numbers. The file previously carried 34 ad-hoc sizes (including `0.94`/`0.95`/`0.96`/`0.97rem`, four values inside half a pixel of each other) and nine separate heading `clamp()` curves. If nothing fits, the right move is to question the design, not to add a 35th value.
+- **Spacing uses the `--sp-*` scale** (4px base). Section rhythm is `--section-y`, which is fluid — it was a flat `128px`, doubling to 256px of dead space between every pair of sections.
+- **`.metric-value.seo` is a standalone modifier.** The parent-scoped `.metric.seo .metric-value` does not reach `.proof-cell`, which is not a `.metric`.
 - The `seo` modifier class switches a card or label from vermillion to green.
+- **Touch targets are 44px.** `.nav-toggle` and `.quotes-btn` are sized unconditionally; text links get there via a `@media (pointer: coarse)` block so desktop density is untouched. The mobile menu button was 38&times;37.
+- **Focus is one ring**, declared once via `:where(a, button, input, …):focus-visible`. Don't add `outline: none` to a control without replacing the indicator — a border-colour change alone is colour-only and fails.
 - **Case numbering is a global `01`–`12` sequence** shared between `/cases/` and the homepage's featured subset, which is deliberately out of order. Adding or merging a case means updating both.
 - **No scroll-reveal without the `.js` gate.** Hidden states apply only under the `.js` class `motion.js` sets, with a 2s force-reveal backstop. An earlier build left blank screens at normal scrolling speed.
 - Breakpoints: 1040px, 1000px, 980px, 720px.

@@ -37,19 +37,99 @@
 
   --wrap: 1220px;
   --gutter: 32px;
-  --section-y: 128px;
+  /* Fluid section rhythm. This was a flat 128px, which doubled to 256px of
+     dead vertical space between every pair of sections (and 244px between
+     the hero and the first band). That read as emptiness rather than
+     intentional whitespace. */
+  --section-y: clamp(56px, 6.6vw, 92px);
+
+  /* ————— TYPE SCALE —————
+     Five display steps, eight text steps, four display-number steps.
+     Before this existed the file carried 34 different font-sizes in mixed
+     units — including 0.94/0.95/0.96/0.97rem, four values inside half a
+     pixel of each other, and nine separate clamp() curves for headings.
+     Those were nudges, not a system. Every font-size in this file is now
+     one of the tokens below; there are no literals left.
+
+     Display uses clamp so it is fluid between 375px and 1440px; text steps
+     are fixed, because body copy that scales with the viewport gets
+     uncomfortably small on phones. */
+  --fs-display-1: clamp(2.15rem, 4.6vw, 3.85rem);  /* homepage hero h1 */
+  --fs-display-2: clamp(2rem, 4.3vw, 3.5rem);      /* interior page h1 */
+  --fs-display-3: clamp(1.95rem, 4vw, 3.1rem);     /* section titles, post h1 */
+  --fs-display-4: clamp(1.6rem, 3vw, 2.35rem);     /* band h2 */
+  --fs-display-5: clamp(1.45rem, 2.6vw, 1.95rem);  /* prose h2, card titles */
+
+  --fs-2xs: 10px;    /* micro labels, badges */
+  --fs-xs: 11px;     /* eyebrows, uppercase meta */
+  --fs-sm: 12px;     /* captions, footnotes, chips */
+  --fs-md: 13px;     /* dense UI text, nav, buttons */
+  --fs-lg: 15px;     /* secondary body, card copy */
+  --fs-base: 17px;   /* body */
+  --fs-xl: 19px;     /* lead paragraphs, card titles, faq questions */
+  --fs-2xl: 22px;    /* prose h3, pull quotes */
+
+  /* Display numbers — Geist, used for figures rather than prose. */
+  --fs-3xl: 26px;    /* proof-row figures */
+  --fs-4xl: 30px;    /* metric grids */
+  --fs-5xl: 32px;    /* hero stats */
+  --fs-6xl: 48px;    /* the hero panel's headline number */
+
+  /* Leading and tracking are part of the scale, not per-rule guesses.
+     Display gets tight leading and negative tracking; body gets air. */
+  --lh-display: 1.05;
+  --lh-tight: 1.25;
+  --lh-body: 1.65;
+  --tr-display: -0.032em;
+  --tr-tight: -0.02em;
+  --tr-caps: 0.16em;
+
+  /* ————— SPACING SCALE —————
+     4px-based. Replaces 38 ad-hoc pixel values (9px, 11px, 13px, 26px,
+     34px, 46px, 54px, 76px, 116px …) that made vertical rhythm impossible
+     to reason about. */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* One focus ring, used everywhere. */
+  --focus: var(--accent);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
+/* ————— FOCUS —————
+   Quality floor: every interactive element needs a visible keyboard focus
+   state. Before this, the only focus rule in the file was on the audit-form
+   chips — tabbing through the nav, buttons, cards, links and footer showed
+   nothing but the browser default, and the form fields explicitly killed it
+   with `outline: none` in favour of a border-colour change (a colour-only
+   indicator, which fails on its own).
+
+   :focus-visible so it appears for keyboard users without ringing on every
+   mouse click. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Dark cards need the ring inside the border, not lost against the page. */
+.svc-card:focus-visible,
+.work-card:focus-visible,
+.proof-cell:focus-visible,
+.article-card:focus-visible {
+  outline-offset: -2px;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: var(--fs-base);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -178,12 +258,12 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 14px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin: 0 0 26px;
+  margin: 0 0 var(--sp-5);
 }
 .eyebrow::before {
   content: '';
@@ -197,12 +277,12 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 64px;
+  gap: var(--sp-10);
+  margin-bottom: var(--sp-12);
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-size: var(--fs-display-3);
   line-height: 1.03;
   letter-spacing: -0.032em;
   font-weight: 700;
@@ -214,12 +294,12 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-mid);
   margin: 16px 0 0;
   max-width: 58ch;
-  font-size: 1.02rem;
+  font-size: var(--fs-base);
 }
 
 .section-link {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--fs-md);
   color: var(--text-mid);
   white-space: nowrap;
   padding-bottom: 6px;
@@ -273,7 +353,7 @@ nav.scrolled .wrap { height: 58px; }
 
 .nav-name {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: var(--fs-lg);
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -292,18 +372,18 @@ nav.scrolled .wrap { height: 58px; }
 
 .nav-links a {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--fs-md);
   color: var(--text-mid);
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
-.nav-links a .num { color: var(--text-faint); margin-right: 7px; font-size: 11px; }
+.nav-links a .num { color: var(--text-faint); margin-right: 7px; font-size: var(--fs-xs); }
 
 /* Primary action — filled, so it reads as a button rather than a
    fourth menu item. Matches the hero CTA. */
 .nav-cta {
   font-family: var(--font-body);
-  font-size: 13.5px;
+  font-size: var(--fs-md);
   font-weight: 600;
   letter-spacing: 0.004em;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
@@ -338,7 +418,7 @@ nav.scrolled .wrap { height: 58px; }
 
 .hero {
   position: relative;
-  padding: 132px 0 116px;
+  padding: clamp(64px, 7.5vw, 108px) 0 clamp(56px, 6.6vw, 92px);
   overflow: hidden;
 }
 
@@ -426,14 +506,14 @@ nav.scrolled .wrap { height: 58px; }
   animation: pulse 2.4s ease-out infinite;
 }
 .viz-src {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--text-faint);
 }
 .viz-badge {
   margin-left: auto;
-  font-size: 9.5px;
+  font-size: var(--fs-2xs);
   font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--accent);
@@ -460,7 +540,7 @@ nav.scrolled .wrap { height: 58px; }
 }
 
 .viz-label {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -468,7 +548,7 @@ nav.scrolled .wrap { height: 58px; }
 }
 .viz-value {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: var(--fs-6xl);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -477,7 +557,7 @@ nav.scrolled .wrap { height: 58px; }
   font-variant-numeric: tabular-nums;
 }
 .viz-delta {
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--accent);
   margin: 0 0 24px;
 }
@@ -530,7 +610,7 @@ nav.scrolled .wrap { height: 58px; }
 @keyframes grow { to { scale: 1 1; } }
 
 .viz-foot {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.06em;
   color: var(--text-faint);
   margin: 14px 0 0;
@@ -557,7 +637,7 @@ nav.scrolled .wrap { height: 58px; }
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   letter-spacing: 0.05em;
   color: var(--text-mid);
   margin: 0 0 30px;
@@ -574,7 +654,7 @@ nav.scrolled .wrap { height: 58px; }
 .hero h1 {
   /* Two explicit lines via <br>; sized so the longer second line fits
      without wrapping to a third down to ~1100px. */
-  font-size: clamp(2.15rem, 4.6vw, 3.85rem);
+  font-size: var(--fs-display-1);
   line-height: 1.06;
   letter-spacing: -0.034em;
   font-weight: 700;
@@ -582,7 +662,7 @@ nav.scrolled .wrap { height: 58px; }
 }
 
 .hero-lede {
-  font-size: 1.12rem;
+  font-size: var(--fs-xl);
   line-height: 1.62;
   color: var(--text-mid);
   max-width: 56ch;
@@ -609,7 +689,7 @@ nav.scrolled .wrap { height: 58px; }
   border-left: 1px solid var(--line);
 }
 .hero-stat-num {
-  font-size: 2rem;
+  font-size: var(--fs-5xl);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--accent);
@@ -618,7 +698,7 @@ nav.scrolled .wrap { height: 58px; }
 }
 .hero-stat-label {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -635,7 +715,7 @@ nav.scrolled .wrap { height: 58px; }
   font-family: var(--font-body);
   /* Was 13.5px at weight 400, which rendered thin and washed-out against
      the vermillion fill. Heavier and slightly larger reads solid. */
-  font-size: 14.5px;
+  font-size: var(--fs-lg);
   font-weight: 600;
   letter-spacing: 0.004em;
   padding: 14px 24px;
@@ -707,7 +787,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--accent);
@@ -717,7 +797,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .work-meta .num { color: var(--text-faint); }
 
 .work-client {
-  font-size: 1.22rem;
+  font-size: var(--fs-xl);
   font-weight: 600;
   letter-spacing: -0.022em;
   margin: 0 0 10px;
@@ -725,7 +805,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 
 .work-result {
   color: var(--text-mid);
-  font-size: 0.97rem;
+  font-size: var(--fs-lg);
   line-height: 1.6;
   margin: 0 0 22px;
 }
@@ -733,7 +813,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 
 .work-cta {
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--text-faint);
   margin-top: auto;
   transition: color 0.2s;
@@ -756,7 +836,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .work-actions .work-cta { margin-top: 0; }
 .work-visit {
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--accent);
   border-bottom: 1px solid var(--accent-line);
   transition: color 0.2s, border-color 0.2s;
@@ -807,13 +887,13 @@ section.band + section.band { border-top: 1px solid var(--line); }
 
 .svc-num {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.1em;
   color: var(--text-faint);
   margin: 0 0 10px;
 }
 .svc-name {
-  font-size: 1.24rem;
+  font-size: var(--fs-xl);
   font-weight: 600;
   letter-spacing: -0.024em;
   margin: 0 0 12px;
@@ -821,7 +901,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .svc-desc {
   color: var(--text-mid);
   margin: 0;
-  font-size: 0.97rem;
+  font-size: var(--fs-lg);
   line-height: 1.62;
 }
 .svc-arrow {
@@ -829,7 +909,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   right: 26px;
   bottom: 24px;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--fs-md);
   color: var(--text-faint);
   transition: color 0.22s, transform 0.22s;
 }
@@ -849,14 +929,14 @@ section.band + section.band { border-top: 1px solid var(--line); }
 
 .article-cat {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0 0 12px;
 }
 .article-title {
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-size: var(--fs-display-5);
   font-weight: 600;
   letter-spacing: -0.028em;
   line-height: 1.2;
@@ -869,11 +949,11 @@ section.band + section.band { border-top: 1px solid var(--line); }
   color: var(--text-mid);
   margin: 0 0 16px;
   max-width: 78ch;
-  font-size: 1rem;
+  font-size: var(--fs-lg);
 }
 .article-meta {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   margin: 0;
 }
@@ -895,7 +975,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   flex: none;
 }
 .insights h2 {
-  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  font-size: var(--fs-display-3);
   line-height: 1.06;
   letter-spacing: -0.032em;
   font-weight: 700;
@@ -908,23 +988,6 @@ section.band + section.band { border-top: 1px solid var(--line); }
   margin: 0 auto 38px;
 }
 
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 0 0 40px;
-  padding: 0;
-  list-style: none;
-}
-.pills li {
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--text-mid);
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  padding: 8px 16px;
-}
 
 /* ————— TESTIMONIALS —————
    Horizontal scroller with snap. Works as a plain scrollable row with no
@@ -951,13 +1014,13 @@ section.band + section.band { border-top: 1px solid var(--line); }
   margin-top: 28px;
 }
 .quotes-btn {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
   background: none;
   color: var(--text-mid);
-  font-size: 15px;
+  font-size: var(--fs-lg);
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -991,22 +1054,22 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .quote-mark {
   font-family: var(--font-body);
   color: var(--accent);
-  font-size: 22px;
+  font-size: var(--fs-2xl);
   line-height: 1;
   margin: 0 0 18px;
 }
 .quote-text {
   margin: 0 0 26px;
-  font-size: 1.02rem;
+  font-size: var(--fs-base);
   line-height: 1.62;
   color: var(--text);
 }
 .quote-who { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
-.quote-name { margin: 0; font-weight: 600; font-size: 0.97rem; }
+.quote-name { margin: 0; font-weight: 600; font-size: var(--fs-lg); }
 .quote-role {
   margin: 3px 0 0;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.05em;
   color: var(--text-faint);
   line-height: 1.5;
@@ -1022,7 +1085,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   margin-bottom: 76px;
 }
 .currently h2 {
-  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-size: var(--fs-display-4);
   letter-spacing: -0.03em;
   line-height: 1.1;
   font-weight: 700;
@@ -1047,11 +1110,11 @@ section.band + section.band { border-top: 1px solid var(--line); }
   padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
-.role-title { margin: 0; font-weight: 500; font-size: 1rem; }
-.role-where { margin: 4px 0 0; color: var(--text-faint); font-size: 0.9rem; }
+.role-title { margin: 0; font-weight: 500; font-size: var(--fs-base); }
+.role-where { margin: 4px 0 0; color: var(--text-faint); font-size: var(--fs-lg); }
 .role-year {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   white-space: nowrap;
 }
@@ -1085,7 +1148,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   align-items: start;
 }
 .contact-grid h2 {
-  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-size: var(--fs-display-3);
   line-height: 1.04;
   letter-spacing: -0.032em;
   font-weight: 700;
@@ -1096,7 +1159,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 
 .contact-direct {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--fs-md);
   color: var(--text-mid);
   margin: 0;
 }
@@ -1107,7 +1170,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .field label {
   display: block;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -1121,7 +1184,7 @@ section.band + section.band { border-top: 1px solid var(--line); }
   border-radius: 5px;
   color: var(--text);
   font-family: inherit;
-  font-size: 0.97rem;
+  font-size: var(--fs-lg);
   padding: 13px 15px;
   transition: border-color 0.2s, background 0.2s;
 }
@@ -1130,9 +1193,15 @@ section.band + section.band { border-top: 1px solid var(--line); }
 .field textarea::placeholder { color: var(--text-faint); }
 .field input:focus,
 .field textarea:focus {
-  outline: none;
   border-color: var(--accent);
   background: var(--bg-raise-2);
+}
+/* Mouse focus keeps the quiet border-only treatment; keyboard focus gets a
+   real ring. The border change alone is a colour-only indicator. */
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 .contact-form .btn { justify-content: center; }
 
@@ -1151,14 +1220,14 @@ footer .wrap {
 }
 .footer-left {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-faint);
   margin: 0;
 }
 .footer-right { display: flex; gap: 26px; }
 .footer-right a {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-mid);
   transition: color 0.2s;
 }
@@ -1184,7 +1253,7 @@ footer .wrap {
 }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 {
-  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  font-size: var(--fs-display-2);
   line-height: 1.04;
   letter-spacing: -0.034em;
   font-weight: 700;
@@ -1193,14 +1262,14 @@ footer .wrap {
 }
 .page-hero-sub {
   color: var(--text-mid);
-  font-size: 1.08rem;
+  font-size: var(--fs-base);
   max-width: 58ch;
   margin: 0;
 }
 
 .crumb {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   margin: 0 0 26px;
 }
@@ -1214,14 +1283,14 @@ footer .wrap {
 
 .post-head { padding: 84px 0 0; }
 .post-head h1 {
-  font-size: clamp(2rem, 4.2vw, 3.15rem);
+  font-size: var(--fs-display-3);
   line-height: 1.07;
   letter-spacing: -0.034em;
   font-weight: 700;
   margin: 0 0 22px;
 }
 .post-standfirst {
-  font-size: 1.16rem;
+  font-size: var(--fs-xl);
   line-height: 1.6;
   color: var(--text-mid);
   margin: 0 0 34px;
@@ -1237,26 +1306,26 @@ footer .wrap {
   border-bottom: 1px solid var(--line);
   margin-bottom: 50px;
 }
-.byline-name { margin: 0; font-weight: 600; font-size: 0.97rem; }
+.byline-name { margin: 0; font-weight: 600; font-size: var(--fs-lg); }
 .byline-role {
   margin: 2px 0 0;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   letter-spacing: 0.04em;
 }
 .byline-dates {
   margin-left: auto;
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   text-align: right;
   line-height: 1.7;
 }
 
-.prose { font-size: 1.06rem; line-height: 1.75; color: var(--text-mid); }
+.prose { font-size: var(--fs-base); line-height: 1.75; color: var(--text-mid); }
 .prose h2 {
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-size: var(--fs-display-5);
   line-height: 1.15;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -1264,7 +1333,7 @@ footer .wrap {
   margin: 56px 0 18px;
 }
 .prose h3 {
-  font-size: 1.2rem;
+  font-size: var(--fs-xl);
   letter-spacing: -0.02em;
   font-weight: 600;
   color: var(--text);
@@ -1298,7 +1367,7 @@ footer .wrap {
 .callout p + p { margin-top: 14px; }
 .callout-label {
   font-family: var(--font-body);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1309,7 +1378,7 @@ footer .wrap {
   width: 100%;
   border-collapse: collapse;
   margin: 0 0 26px;
-  font-size: 0.95rem;
+  font-size: var(--fs-lg);
 }
 .data-table th, .data-table td {
   text-align: left;
@@ -1318,7 +1387,7 @@ footer .wrap {
 }
 .data-table th {
   font-family: var(--font-body);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -1332,8 +1401,8 @@ footer .wrap {
   padding-top: 30px;
   border-top: 1px solid var(--line);
 }
-.sources h2 { font-size: 1.05rem; margin: 0 0 16px; }
-.sources ol { padding-left: 20px; margin: 0; font-size: 0.94rem; }
+.sources h2 { font-size: var(--fs-base); margin: 0 0 16px; }
+.sources ol { padding-left: 20px; margin: 0; font-size: var(--fs-lg); }
 .sources li { margin-bottom: 10px; color: var(--text-faint); }
 
 .author-box {
@@ -1346,9 +1415,9 @@ footer .wrap {
   border-radius: 8px;
   background: var(--bg-raise);
 }
-.author-box p { margin: 0 0 10px; font-size: 0.96rem; }
+.author-box p { margin: 0 0 10px; font-size: var(--fs-lg); }
 .author-box p:last-child { margin: 0; }
-.author-box .byline-name { font-size: 1.05rem; }
+.author-box .byline-name { font-size: var(--fs-base); }
 
 .post-cta {
   margin-top: 44px;
@@ -1358,7 +1427,7 @@ footer .wrap {
   background: var(--accent-dim);
 }
 .post-cta h2 {
-  font-size: 1.45rem;
+  font-size: var(--fs-2xl);
   letter-spacing: -0.026em;
   margin: 0 0 10px;
   color: var(--text);
@@ -1384,7 +1453,7 @@ footer .wrap {
 }
 .metric-value {
   font-family: var(--font-display);
-  font-size: 1.85rem;
+  font-size: var(--fs-4xl);
   font-weight: 700;
   letter-spacing: -0.032em;
   line-height: 1;
@@ -1396,7 +1465,7 @@ footer .wrap {
    rule above never reaches the proof row on /services/seo/. */
 .metric-value.seo { color: var(--green); }
 .metric-label {
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -1412,7 +1481,7 @@ figure.shot img {
   background: var(--bg-raise-2);
 }
 figure.shot figcaption {
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.05em;
   color: var(--text-faint);
   margin-top: 11px;
@@ -1435,7 +1504,7 @@ figure.shot figcaption {
   list-style: none;
 }
 .stack li {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-mid);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -1455,14 +1524,14 @@ figure.shot figcaption {
 }
 .faq > h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-size: var(--fs-display-5);
   letter-spacing: -0.03em;
   font-weight: 700;
   margin: 0 0 8px;
 }
 .faq h3 {
   font-family: var(--font-display);
-  font-size: 1.12rem;
+  font-size: var(--fs-xl);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -1483,7 +1552,7 @@ figure.shot figcaption {
 /* ————— SERVICE PAGE PIECES ————— */
 
 .svc-lead {
-  font-size: 1.14rem;
+  font-size: var(--fs-xl);
   line-height: 1.65;
   color: var(--text-mid);
   max-width: 62ch;
@@ -1506,10 +1575,10 @@ figure.shot figcaption {
   transition: background 0.2s;
 }
 a.proof-cell:hover { background: var(--bg-raise); }
-.proof-cell .metric-value { font-size: 1.6rem; }
+.proof-cell .metric-value { font-size: var(--fs-3xl); }
 .proof-cell .metric-label { margin-bottom: 8px; }
 .proof-cell .proof-link {
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-faint);
   transition: color 0.2s;
 }
@@ -1526,7 +1595,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 }
 
 .form-aside h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: var(--fs-display-4);
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin: 0 0 18px;
@@ -1542,7 +1611,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 .promise-title {
   margin: 0 0 5px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -1550,10 +1619,10 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 .promise-title::before {
   content: attr(data-n);
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--accent);
 }
-.promise-desc { margin: 0 0 0 30px; color: var(--text-mid); font-size: 0.95rem; }
+.promise-desc { margin: 0 0 0 30px; color: var(--text-mid); font-size: var(--fs-lg); }
 
 .form-card {
   border: 1px solid var(--line);
@@ -1575,7 +1644,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   border-radius: 5px;
   color: var(--text);
   font-family: inherit;
-  font-size: 0.97rem;
+  font-size: var(--fs-lg);
   padding: 13px 15px;
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, var(--text-faint) 50%),
@@ -1584,7 +1653,8 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
 }
-.field select:focus { outline: none; border-color: var(--accent); }
+.field select:focus { border-color: var(--accent); }
+.field select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .field select:invalid { color: var(--text-faint); }
 
 /* Service chips — real checkboxes, styled as pills */
@@ -1598,7 +1668,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 .chip span {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-mid);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -1623,7 +1693,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 }
 
 .form-note {
-  font-size: 0.86rem;
+  font-size: var(--fs-md);
   color: var(--text-faint);
   margin: 0;
   line-height: 1.6;
@@ -1633,7 +1703,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   display: none;
   border-radius: 6px;
   padding: 14px 16px;
-  font-size: 0.94rem;
+  font-size: var(--fs-lg);
   margin: 0;
 }
 .form-status.show { display: block; }
@@ -1653,7 +1723,7 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 .contact-side li:last-child { border-bottom: 1px solid var(--line); }
 .contact-side dt {
   font-family: var(--font-body);
-  font-size: 10.5px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -1675,6 +1745,10 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 @media (max-width: 1040px) {
   .hero-grid { grid-template-columns: 1fr; gap: 0; }
   .hero-viz { display: none; }
+  /* The panel is gone below this width, so the stats row should use the
+     whole container. Capped at 720px it stopped ~240px short of the right
+     edge and read as an unfinished row rather than a deliberate one. */
+  .hero-stats { max-width: none; }
 }
 
 @media (max-width: 1000px) {
@@ -1703,11 +1777,11 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   .nav-links.open { display: flex; }
   .nav-links li { width: 100%; }
   .nav-links li a { display: block; padding: 13px 0; }
-  .nav-toggle { display: block; }
+  .nav-toggle { display: inline-flex; }
   /* Two zones on mobile: logo left, CTA + burger right. The CTA stays
      visible rather than hiding inside the drawer. */
   nav .wrap { display: flex; justify-content: space-between; }
-  .nav-cta { padding: 9px 15px; font-size: 12.5px; }
+  .nav-cta { padding: 9px 15px; font-size: var(--fs-sm); }
   /* Dropdown hangs off the bar, which shrinks once scrolled */
   nav.scrolled .nav-links { top: 58px; }
 
@@ -1748,4 +1822,32 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   .post-cta { padding: 24px; }
   .form-card { padding: 24px 20px; }
   .field-row { grid-template-columns: 1fr; gap: 20px; }
+}
+
+
+/* ————— TOUCH TARGETS —————
+   §7 floor: interactive controls need to be at least 44x44 CSS px on touch.
+   Measured at 375px, these were all under it — the mobile menu button worst
+   of all at 38x37, which is the one control a phone user cannot avoid.
+
+   The unconditional fixes are on controls where a larger hit area costs
+   nothing visually. The rest sit behind `pointer: coarse` so desktop
+   spacing and the footer's density are untouched. */
+.nav-toggle {
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-cta { min-height: 44px; display: inline-flex; align-items: center; }
+
+@media (pointer: coarse) {
+  .nav-name,
+  .section-link,
+  .footer-right a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }

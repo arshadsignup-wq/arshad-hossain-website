@@ -359,6 +359,15 @@ def lint():
             problems.append(f"{rel}: not in tools/pages.py manifest")
             continue
 
+        # head essentials — these live in the hand-written part of the head, so
+        # the injector never supplies them. Omitting the viewport tag makes a
+        # page render at ~980px and scale down on every phone; it happened once
+        # on services/seo/ and was invisible to every other check here.
+        if 'name="viewport"' not in s:
+            problems.append(f"{rel}: no <meta name=\"viewport\"> (breaks mobile)")
+        if 'charset=' not in s[:s.find("</head>") if "</head>" in s else 800]:
+            problems.append(f"{rel}: no <meta charset>")
+
         # structure
         h1 = len(re.findall(r'<h1[\s>]', s))
         if h1 != 1:

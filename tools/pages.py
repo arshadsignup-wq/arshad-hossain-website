@@ -103,10 +103,10 @@ PAGES = {
     ),
     "services/seo/index.html": dict(
         kind="service",
-        title="SEO Services · Rankings That Bring Customers",
-        desc="Freelance SEO across industries: technical foundations, Google Business Profile work and content that ranks. Documented zero to Page 1 in three months.",
+        title="Freelance SEO Consultant for Small Businesses",
+        desc="Independent SEO consultant for small businesses: technical, local and e-commerce SEO, plus the Google Business Profile. Documented zero to Page 1 in three months.",
         crumbs=[("Home", ""), ("Services", "services/")],
-        service_name="SEO and Content Strategy",
+        service_name="Freelance SEO Consulting",
         service_type="Search engine optimisation",
     ),
 

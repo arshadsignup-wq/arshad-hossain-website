@@ -1392,6 +1392,9 @@ footer .wrap {
   margin: 0 0 7px;
 }
 .metric.seo .metric-value { color: var(--green); }
+/* Standalone modifier: .proof-cell isn't .metric, so the parent-scoped
+   rule above never reaches the proof row on /services/seo/. */
+.metric-value.seo { color: var(--green); }
 .metric-label {
   font-size: 10.5px;
   letter-spacing: 0.1em;

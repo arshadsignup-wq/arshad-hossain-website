@@ -45,6 +45,28 @@ def ga_block():
 
 
 # ----------------------------------------------------------------- helpers
+ASSETS = ("style-v2.css", "motion.js", "form.js")
+
+
+def asset_version(name):
+    """Short content hash, so ?v= changes only when the file does."""
+    import hashlib
+    return hashlib.sha1(io.open(name, "rb").read()).hexdigest()[:8]
+
+
+def stamp_assets(src):
+    """Add ?v=<hash> to the CSS and JS references.
+
+    Cache-Control on these is immutable for a year, which is only safe if the
+    URL changes when the file does. Without this a returning visitor keeps a
+    stale stylesheet until the cache expires.
+    """
+    for name in ASSETS:
+        v = asset_version(name)
+        src = re.sub(re.escape(name) + r'(\?v=[0-9a-f]+)?', f"{name}?v={v}", src)
+    return src
+
+
 def read(p):
     return io.open(p, encoding="utf-8").read()
 
@@ -297,12 +319,15 @@ def inject_ga(s, check=False):
 
 def inject(path, meta, check=False):
     s = read(path)
+    orig = s
     s, ga_changed = inject_ga(s, check)
+    s = stamp_assets(s)
+    asset_changed = s != orig and not ga_changed
     block = head_block(path, meta, s)
 
     if START in s and END in s:
         cur = s[s.index(START): s.index(END) + len(END)]
-        if cur == block and not ga_changed:
+        if cur == block and not ga_changed and not asset_changed:
             return False
         if check:
             return True

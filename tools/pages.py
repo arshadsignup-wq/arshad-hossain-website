@@ -64,7 +64,7 @@ PAGES = {
         crumbs=[("Home", "")],
     ),
     "projects/index.html": dict(
-        kind="hub",
+        kind="hub", noindex=True,
         title="Projects · Tools I Built With AI",
         desc="Side projects built to solve real problems: civic accountability, parenting tools, invoice generation, and an AI prompt library.",
         crumbs=[("Home", "")],
@@ -96,7 +96,7 @@ PAGES = {
     "services/messenger-ads/index.html": dict(
         kind="service",
         title="Click-to-Messenger Ad Campaigns",
-        desc="Click-to-Messenger campaign management. Conversations at two to four cents each in conversational-commerce markets, and an honest account of where it doesn't fit.",
+        desc="Click-to-Messenger campaign management. Conversations at two to four cents each in conversational-commerce markets, and an honest account of where it does not fit.",
         crumbs=[("Home", ""), ("Services", "services/")],
         service_name="Click-to-Messenger Ads",
         service_type="Conversational advertising campaign management",
@@ -177,7 +177,7 @@ PAGES = {
     "blog/messenger-ads-bangladesh/index.html": dict(
         kind="post",
         title="Why Click-to-Messenger Beats Conversion Ads in Bangladesh",
-        desc="12,813 Messenger conversations on $576.51 of spend, four cents each. Why conversational objectives win in F-commerce markets, and the four cases where they don't.",
+        desc="12,813 Messenger conversations on $576.51 of spend, four cents each. Why conversational objectives win in F-commerce markets, and the four cases where they fail.",
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-07-09", modified="2026-07-09",
     ),
@@ -193,13 +193,13 @@ PAGES = {
 # ---- case studies: result-led titles, because "[Client] Case Study"
 #      targets a name nobody searches.
 _CASES = [
-    ("scalp-shop",           "$86 to $3.91 Cost Per Lead: Facebook Ads for a US Hair Clinic",
+    ("scalp-shop",           "$86 to $3.91 Cost Per Lead: Facebook Ads, US Hair Clinic",
      "How 35 Facebook Ads campaigns took a US hair and scalp clinic's cost per lead from $86 to $3.91, a 95% reduction, with a 94/100 Meta Opportunity Score."),
     ("nevada",               "$5.08 B2B Cost Per Lead: Facebook Ads for Nevada Access",
      "A full-funnel B2B Facebook Ads campaign producing 64 leads at $5.08 each, 63% below Meta's own benchmark, on a $100 awareness spend reaching 43,927 people."),
     ("wardrobe-by-syra",     "Wardrobe By Syra: 4 Meta Campaigns, 4 Objectives",
      "Four campaigns for one Bangladeshi fashion brand: 12,813 Messenger conversations at $0.04, 121 purchases at $0.71, and a Reel that hit 333,110 views."),
-    ("lending",              "45 Facebook Ads Leads at $7.98 and $11.21 CPL for a US Lender",
+    ("lending",              "45 Facebook Ads Leads at $7.98 and $11.21 CPL, US Lender",
      "Two Facebook Ads lead gen campaigns for a US lending company: 45 leads at $7.98 and $11.21 cost per lead, with a 100/100 Meta Opportunity Score on both accounts."),
     ("roofing",              "70 Roofing Leads at $66.60 Cost Per Lead",
      "Facebook Ads for a US roofing company: 70 leads at $66.60 cost per lead, well under the $115+ published benchmark for the category. Campaign still running."),
@@ -208,10 +208,10 @@ _CASES = [
     ("alami-clinic",         "Zero to Page 1 in Three Months: Medical SEO in Singapore",
      "Medical SEO for a Singapore clinic: Page 1 rankings within three months from a standing start, a 75% organic traffic increase, 516 clicks and 25,000 impressions."),
     ("gettakaful",           'Fintech SEO: #1 for "Takaful Insurance in Canada"',
-     "SEO for a Canadian Islamic insurance startup: #1 rankings for \"takaful insurance in canada\" and \"shariah insurance in canada\" through a blog-driven content strategy."),
-    ("aifarming",            'AgriTech SEO: Page 1 for "AI in Home Farming" in Toronto',
-     'SEO for a Toronto AgriTech platform: Page 1 for "AI in home farming", plus rankings across balcony gardening and crop-growth queries. Topic authority from zero.'),
-    ("hills-harvest",        "39 to 700+ Monthly Visits: Local SEO for a Sydney Halal Grocer",
+     "SEO for a Canadian Islamic insurance startup: #1 rankings for takaful insurance in canada and shariah insurance in canada, through a blog-driven content strategy."),
+    ("aifarming",            "AgriTech SEO: Page 1 for AI in Home Farming, Toronto",
+     "SEO for a Toronto AgriTech platform: Page 1 for AI in home farming, plus rankings across balcony gardening and crop-growth queries. Topic authority from zero."),
+    ("hills-harvest",        "39 to 700+ Visits: Local SEO for a Sydney Halal Grocer",
      "Local SEO for a Western Sydney halal delivery business: organic visits from 39 to 700+, keywords ranking from 49 to 202, and #1 for two suburb delivery terms."),
     ("pretty-party-platters", "670 to 2,800 Organic Visits: SEO for Pretty Party Platters",
      "SEO for Pretty Party Platters, a US caterer: organic traffic from 670 to 2,800 a month, keywords from 669 to 1,400, and 262 pages cited by AI assistants."),
@@ -232,9 +232,12 @@ _PROJECTS = [
     ("prompt-black-magic", "Prompt Black Magic · AI Prompt Library for Marketers",
      "100+ curated AI prompts for Google Ads, SEO, social media, email marketing and productivity, with search, filter and one-click copy."),
 ]
+# Side projects stay on the site for human visitors but out of the index.
+# Each runs 134-190 words against a 489-word median: on a 32-page site they
+# were an eighth of the indexable surface carrying no commercial intent.
 for slug, title, desc in _PROJECTS:
     PAGES[f"projects/{slug}/index.html"] = dict(
-        kind="project", title=title, desc=desc,
+        kind="project", title=title, desc=desc, noindex=True,
         crumbs=[("Home", ""), ("Projects", PROJECTS)],
     )
 

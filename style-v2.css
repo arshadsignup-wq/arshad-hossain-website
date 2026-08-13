@@ -1977,3 +1977,14 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
 /* Drawn icons at one stroke weight, replacing the arrow glyphs. */
 .ico { display: inline-block; vertical-align: -0.08em; margin-left: 0.32em; flex: none; }
 .btn .ico, .nav-cta .ico { margin-left: 0.5em; }
+
+/* ————— Hero headline spans the grid —————
+   Each sentence is one line by design. Inside the 684px text column the
+   longer sentence needed 909px at 61.6px, so it broke into four lines; the
+   only way to fit it there was dropping the type about 25%. Spanning the
+   full 1220px keeps the size and gives each sentence its own line down to
+   the tablet breakpoint, below which it wraps naturally. */
+.hero-head { grid-column: 1 / -1; }
+.hero-head h1 { margin-bottom: 0; text-wrap: balance; }
+.hero-grid { row-gap: clamp(28px, 3.5vw, 48px); }
+.hero-copy > .hero-lede:first-child { margin-top: 0; }

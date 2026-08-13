@@ -61,7 +61,8 @@
         var top = article.offsetTop;
         var span = article.offsetHeight - window.innerHeight;
         var done = span > 0 ? (window.scrollY - top) / span : 0;
-        bar.style.width = Math.max(0, Math.min(1, done)) * 100 + '%';
+        // scaleX, not width: animating width relayouts on every scroll frame.
+        bar.style.transform = 'scaleX(' + Math.max(0, Math.min(1, done)) + ')';
       };
       track();
       window.addEventListener('scroll', track, { passive: true });
@@ -70,43 +71,11 @@
 
     if (reduced) return;
 
-    /* —— Count up the hero stats ——
-       The final value is already in the HTML, so a failure here leaves
-       the correct number on screen rather than a zero. */
-    var stats = document.querySelectorAll('.hero-stat-num');
-    for (var s = 0; s < stats.length; s++) {
-      (function (el) {
-        var full = el.textContent.trim();
-        var digits = full.match(/[\d.]+/);
-        if (!digits) return;
-
-        var target = parseFloat(digits[0]);
-        var before = full.slice(0, full.indexOf(digits[0]));
-        var after = full.slice(full.indexOf(digits[0]) + digits[0].length);
-        var decimals = (digits[0].split('.')[1] || '').length;
-        var started = false;
-
-        var run = function () {
-          if (started) return;
-          started = true;
-          var t0 = null;
-          var step = function (now) {
-            if (t0 === null) t0 = now;
-            var p = Math.min((now - t0) / 1100, 1);
-            var eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = before + (target * eased).toFixed(decimals) + after;
-            if (p < 1) requestAnimationFrame(step);
-            else el.textContent = full;
-          };
-          requestAnimationFrame(step);
-        };
-
-        // Only animate if it is on screen at load; otherwise leave it be.
-        if (el.getBoundingClientRect().top < window.innerHeight) {
-          setTimeout(run, 320);
-        }
-      })(stats[s]);
-    }
+    /* Figures are never animated on this site.
+       A count-up walks a real number through values that were never true:
+       captures caught the hero reading $216K+, 35+, 82% and 10,609 on a page
+       whose whole argument is that every figure is real and linked to its
+       reporting. The final value is authored in the HTML and stays there. */
 
     /* —— Testimonial slider ——
        The row already scrolls and snaps with pure CSS. This only adds
@@ -169,28 +138,6 @@
       var tabs = document.querySelectorAll('.viz-tabs span');
       var at = 0;
 
-      var countUp = function (el) {
-        var to = parseFloat(el.dataset.to);
-        var from = parseFloat(el.dataset.from || 0);
-        var dec = parseInt(el.dataset.dec || 0, 10);
-        var pre = el.dataset.pre || '';
-        var suf = el.dataset.suf || '';
-        var t0 = null;
-
-        var fmt = function (n) {
-          return pre + n.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suf;
-        };
-        var step = function (now) {
-          if (t0 === null) t0 = now;
-          var p = Math.min((now - t0) / 1200, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = fmt(from + (to - from) * eased);
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = fmt(to);
-        };
-        requestAnimationFrame(step);
-      };
-
       var show = function (i) {
         for (var s = 0; s < slides.length; s++) {
           slides[s].classList.remove('is-on');
@@ -201,8 +148,6 @@
         slides[i].classList.add('is-on');
         if (tabs[i]) tabs[i].classList.add('is-on');
 
-        var num = slides[i].querySelector('.viz-num');
-        if (num) countUp(num);
       };
 
       show(0);

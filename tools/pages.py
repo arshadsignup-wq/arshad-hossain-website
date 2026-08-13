@@ -177,7 +177,7 @@ PAGES = {
     "blog/messenger-ads-bangladesh/index.html": dict(
         kind="post",
         title="Why Click-to-Messenger Beats Conversion Ads in Bangladesh",
-        desc="12,813 Messenger conversations on $576 of spend, four cents each. Why conversational objectives win in F-commerce markets, and the four cases where they don't.",
+        desc="12,813 Messenger conversations on $576.51 of spend, four cents each. Why conversational objectives win in F-commerce markets, and the four cases where they don't.",
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-07-09", modified="2026-07-09",
     ),

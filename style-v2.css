@@ -239,10 +239,12 @@ a { color: inherit; text-decoration: none; }
   top: 0;
   left: 0;
   height: 2px;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
   background: var(--accent);
   z-index: 100;
-  transition: width 0.1s linear;
+  transition: transform 0.1s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -344,7 +346,7 @@ nav .wrap {
   grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   align-items: center;
   height: 72px;
-  transition: height 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition: none;
 }
 nav.scrolled .wrap { height: 58px; }
 
@@ -1871,3 +1873,107 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
     align-items: center;
   }
 }
+
+/* ————— Audit band: the homepage's single conversion, given the weight ————— */
+.audit-band {
+  background: var(--accent);
+  color: #fff;
+  padding: clamp(56px, 6.5vw, 92px) 0;
+}
+.audit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: end;
+}
+.audit-band h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-3);
+  line-height: 1.04;
+  letter-spacing: -0.013em;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.audit-band p { color: rgba(255, 255, 255, 0.94); margin: 0; max-width: 54ch; }
+.audit-action { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+/* White on this vermillion measures 5.12:1. */
+.btn-audit {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid #fff;
+  font-weight: 600;
+  padding: 18px 32px;
+}
+.btn-audit:hover { background: var(--text); color: #fff; border-color: var(--text); }
+.audit-note { font-size: var(--fs-md); color: rgba(255, 255, 255, 0.9) !important; }
+
+/* The hero's second action is a link, not a rival button. */
+.hero-secondary {
+  align-self: center;
+  font-size: var(--fs-lg);
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  text-underline-offset: 0.2em;
+}
+.hero-secondary:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ————— P5: long-form measure. 83ch was too wide to read comfortably. ————— */
+/* 58ch, not 68. The ch unit is the width of the zero glyph (9.83px at this
+   size), not an average character (~8.5px), so 68ch rendered as roughly 78
+   characters per line. 58ch lands near 68, inside the comfortable range. */
+.prose > p, .prose > ul, .prose > ol, .prose > blockquote { max-width: 58ch; }
+
+@media (max-width: 860px) {
+  .audit-grid { grid-template-columns: 1fr; align-items: start; }
+  .btn-audit { width: 100%; text-align: center; }
+}
+
+/* ————— Services as a ruled list —————
+   Replaces six same-size icon+heading+text cards. A card grid is the default
+   container for "a set of things" and says nothing about what these are;
+   a ruled list reads top to bottom and lets each service carry its result. */
+.svc-list { border-top: 1px solid var(--line-strong); }
+.svc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 20ch);
+  gap: 32px;
+  align-items: baseline;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  transition: background 0.15s ease;
+}
+.svc-row:hover { background: rgba(22, 19, 15, 0.028); }
+.svc-row-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.013em;
+  line-height: 1.12;
+}
+.svc-row:hover .svc-row-name { color: var(--accent); }
+.svc-row-desc { color: var(--text-mid); font-size: var(--fs-lg); line-height: 1.55; }
+.svc-row-fig {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--accent);
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+@media (max-width: 900px) {
+  .svc-row {
+    grid-template-columns: 1fr;
+    grid-template-areas: "name" "fig" "desc";
+    gap: 6px;
+    padding: 22px 0;
+  }
+  .svc-row-name { grid-area: name; }
+  .svc-row-fig  { grid-area: fig; text-align: left; }
+  .svc-row-desc { grid-area: desc; margin-top: 4px; }
+}
+
+/* Drawn icons at one stroke weight, replacing the arrow glyphs. */
+.ico { display: inline-block; vertical-align: -0.08em; margin-left: 0.32em; flex: none; }
+.btn .ico, .nav-cta .ico { margin-left: 0.5em; }

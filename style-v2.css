@@ -1929,51 +1929,6 @@ a.proof-cell:hover .proof-link { color: var(--accent); }
   .btn-audit { width: 100%; text-align: center; }
 }
 
-/* ————— Services as a ruled list —————
-   Replaces six same-size icon+heading+text cards. A card grid is the default
-   container for "a set of things" and says nothing about what these are;
-   a ruled list reads top to bottom and lets each service carry its result. */
-.svc-list { border-top: 1px solid var(--line-strong); }
-.svc-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 20ch);
-  gap: 32px;
-  align-items: baseline;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--line);
-  color: inherit;
-  transition: background 0.15s ease;
-}
-.svc-row:hover { background: rgba(22, 19, 15, 0.028); }
-.svc-row-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
-  font-weight: 600;
-  letter-spacing: -0.013em;
-  line-height: 1.12;
-}
-.svc-row:hover .svc-row-name { color: var(--accent); }
-.svc-row-desc { color: var(--text-mid); font-size: var(--fs-lg); line-height: 1.55; }
-.svc-row-fig {
-  font-family: var(--font-display);
-  font-size: var(--fs-lg);
-  font-weight: 600;
-  color: var(--accent);
-  text-align: right;
-  font-variant-numeric: tabular-nums lining-nums;
-}
-@media (max-width: 900px) {
-  .svc-row {
-    grid-template-columns: 1fr;
-    grid-template-areas: "name" "fig" "desc";
-    gap: 6px;
-    padding: 22px 0;
-  }
-  .svc-row-name { grid-area: name; }
-  .svc-row-fig  { grid-area: fig; text-align: left; }
-  .svc-row-desc { grid-area: desc; margin-top: 4px; }
-}
-
 /* Drawn icons at one stroke weight, replacing the arrow glyphs. */
 .ico { display: inline-block; vertical-align: -0.08em; margin-left: 0.32em; flex: none; }
 .btn .ico, .nav-cta .ico { margin-left: 0.5em; }

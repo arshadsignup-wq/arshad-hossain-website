@@ -211,6 +211,8 @@ _CASES = [
      "SEO for a Canadian Islamic insurance startup: #1 rankings for \"takaful insurance in canada\" and \"shariah insurance in canada\" through a blog-driven content strategy."),
     ("aifarming",            'AgriTech SEO: Page 1 for "AI in Home Farming" in Toronto',
      'SEO for a Toronto AgriTech platform: Page 1 for "AI in home farming", plus rankings across balcony gardening and crop-growth queries. Topic authority from zero.'),
+    ("hills-harvest",        "39 to 700+ Monthly Visits: Local SEO for a Sydney Halal Grocer",
+     "Local SEO for a Western Sydney halal delivery business: organic visits from 39 to 700+, keywords ranking from 49 to 202, and #1 for two suburb delivery terms."),
 ]
 for slug, title, desc in _CASES:
     PAGES[f"cases/{slug}/index.html"] = dict(

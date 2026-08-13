@@ -16,3 +16,7 @@ Arshad Hossain_Updated Resume_2026.pdf
 keyword-seeds.md
 keyword-seeds-plain.txt
 keyword-seeds-batch*.txt
+
+# Client working folders. Never commit these: raw material, not site content.
+*.zip
+cases/Hills Harvest/

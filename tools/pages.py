@@ -46,7 +46,7 @@ PAGES = {
     "index.html": dict(
         kind="home",
         title="Arshad Hossain · Freelance Meta Ads & SEO Specialist",
-        desc="Independent Meta Ads and SEO specialist. $250K+ in ad spend managed across 40+ accounts for clients in the US, Canada and Singapore. Cost per lead cut by up to 95%.",
+        desc="Independent Meta Ads and SEO specialist. $250K+ ad spend managed across 40+ accounts. Cost per lead cut by up to 95%, organic traffic grown 4.2x.",
         crumbs=[],
     ),
 

@@ -434,9 +434,21 @@ def lint():
         base = os.path.dirname(p)
         for v in re.findall(r'src="([^"]+\.(?:png|jpe?g|webp|svg))"', read(p)):
             used.add(os.path.normpath(os.path.join(base, v)) if base else v)
+    # Anything git ignores is not part of the site: client working folders get
+    # dropped here and are raw material, not assets the pages should reference.
+    ignored = set()
+    try:
+        import subprocess
+        out = subprocess.run(["git", "ls-files", "--others", "--ignored",
+                              "--exclude-standard", "-z"],
+                             capture_output=True, text=True, timeout=20).stdout
+        ignored = {os.path.normpath(x) for x in out.split("\0") if x}
+    except Exception:
+        pass
+
     for img in glob.glob("**/*.png", recursive=True) + glob.glob("**/*.jpg", recursive=True) \
             + glob.glob("**/*.jpeg", recursive=True):
-        if img.startswith((".git", "tools")):
+        if img.startswith((".git", "tools")) or os.path.normpath(img) in ignored:
             continue
         if os.path.normpath(img) not in used and os.path.basename(img) not in (
                 "og-default.png", "favicon-32.png", "icon-512.png", "apple-touch-icon.png"):

@@ -20,3 +20,4 @@ keyword-seeds-batch*.txt
 # Client working folders. Never commit these: raw material, not site content.
 *.zip
 cases/Hills Harvest/
+cases/pretty party platters/

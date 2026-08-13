@@ -213,8 +213,8 @@ _CASES = [
      'SEO for a Toronto AgriTech platform: Page 1 for "AI in home farming", plus rankings across balcony gardening and crop-growth queries. Topic authority from zero.'),
     ("hills-harvest",        "39 to 700+ Monthly Visits: Local SEO for a Sydney Halal Grocer",
      "Local SEO for a Western Sydney halal delivery business: organic visits from 39 to 700+, keywords ranking from 49 to 202, and #1 for two suburb delivery terms."),
-    ("pretty-party-platters", "670 to 2,800 Organic Visits: SEO for a US Caterer",
-     "Ten months of SEO for a US party platter caterer: organic traffic from 670 to 2,800 a month, keywords from 669 to 1,400, and 262 pages cited by AI assistants."),
+    ("pretty-party-platters", "670 to 2,800 Organic Visits: SEO for Pretty Party Platters",
+     "SEO for Pretty Party Platters, a US caterer: organic traffic from 670 to 2,800 a month, keywords from 669 to 1,400, and 262 pages cited by AI assistants."),
 ]
 for slug, title, desc in _CASES:
     PAGES[f"cases/{slug}/index.html"] = dict(

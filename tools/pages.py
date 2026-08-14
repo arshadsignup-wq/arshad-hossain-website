@@ -156,7 +156,7 @@ PAGES = {
     "free-audit/index.html": dict(
         kind="form",
         title="Free Facebook Ads & SEO Audit · No Cost, No Pitch",
-        desc="Send me your ad account or your site. I'll review it before we speak and come back with what's costing you money and what I'd change first. No cost.",
+        desc="Send me your site or your ad account. I'll review it and come back with what is costing you money and what I would change first, before we ever speak.",
         crumbs=[("Home", "")],
     ),
     "contact/index.html": dict(

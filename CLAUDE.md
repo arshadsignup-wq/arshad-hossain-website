@@ -71,6 +71,10 @@ Each keeps a real `action`/`method` so it works with JS off; `form.js` intercept
 - The `seo` modifier class switches a card or label from vermillion to green.
 - **Touch targets are 44px.** `.nav-toggle` and `.quotes-btn` are sized unconditionally; text links get there via a `@media (pointer: coarse)` block so desktop density is untouched. The mobile menu button was 38&times;37.
 - **Focus is one ring**, declared once via `:where(a, button, input, …):focus-visible`. Don't add `outline: none` to a control without replacing the indicator — a border-colour change alone is colour-only and fails.
+- **Never reference `style-v2.css`, `motion.js` or `form.js` without `?v=`** — `tools/build.py` stamps a content hash onto all three across every page, because `vercel.json` caches them `immutable` for a year. Editing the CSS marks all 33 pages stale; run the build before committing or returning visitors keep the old file.
+- **Content images are `.webp`.** 31 originals were converted and deleted (3MB to 1MB). `og-default.png` and the favicons stay PNG for platform compatibility. Deleting an original means its old URL 404s, so convert and update references in the same commit.
+- **`/projects/` is `noindex, follow`** — five pages at 133–190 words against a 489-word median, no commercial intent. They stay for human visitors and stay in the footer. Sitemap is 27 URLs, not 32.
+- **Client working folders are gitignored.** `*.zip` and named folders under `cases/`. Raw client material gets dropped in `cases/` and must never ship: one was a 1.2GB archive containing another client's files. `build.py`'s orphan-image check skips anything git ignores.
 - **Case numbering is a global `01`–`12` sequence** shared between `/cases/` and the homepage's featured subset, which is deliberately out of order. Adding or merging a case means updating both.
 - **No scroll-reveal without the `.js` gate.** Hidden states apply only under the `.js` class `motion.js` sets, with a 2s force-reveal backstop. An earlier build left blank screens at normal scrolling speed.
 - Breakpoints: 1040px, 1000px, 980px, 720px.
@@ -87,6 +91,9 @@ Tone is plain-spoken and specific — short declarative sentences, numbers over 
 A vendored `copywriting` skill lives at `.agents/skills/copywriting/` (symlinked into `.claude/skills/`, pinned in `skills-lock.json`).
 
 ## Known hazards
+
+- **`img` needs `height: auto`, and this has broken twice.** Every screenshot sets `width: 100%`; without `height: auto` the HTML `height` attribute applies as the CSS height and the image renders squashed. It is now on the base `img` rule so no selector can miss it. When it regressed, all 17 case screenshots were distorted and nothing flagged it — the linter checks that `width`/`height` attributes *exist*, not that the rendering respects them.
+- **Portrait screenshots need `width: auto`.** With `width: 100%` a 575px-wide image upscales to fill the column: one rendered 916&times;2037 and blurry. `figure.shot img` uses `width: auto; max-width: 100%; max-height: 820px`.
 
 - **Regex-migrating these pages is dangerous.** A non-greedy `<div class="X">(.*?)</div>` silently truncates any page where that div contains nested divs. This corrupted four case studies (`lending`, `roofing`, `wardrobe-conversion`, `wardrobe-reel`) — their metrics grids nest inside `.case-body-text`. Always count nesting depth, and always check `<div` vs `</div>` counts per file afterwards.
 - **`perl -pi` mangles UTF-8** unless the encoding layer is set; it double-encoded 11 separators in `cases/index.html` into `Â·`. Prefer Python with explicit `encoding="utf-8"` for any bulk edit.

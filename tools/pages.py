@@ -188,6 +188,50 @@ PAGES = {
         crumbs=[("Home", ""), ("Blog", BLOG)],
         published="2026-07-28", modified="2026-07-28",
     ),
+
+    # ---- comparison and decision posts: the low-difficulty half of the
+    #      keyword export, and the cluster where AI Overviews appear most,
+    #      so being cited matters as much as being clicked.
+    "blog/facebook-ads-vs-google-ads/index.html": dict(
+        kind="post",
+        title="Facebook Ads vs Google Ads: Which One Do You Need?",
+        desc="Google Ads harvests demand that already exists, Meta Ads creates it. The test I use to decide, plus real cost per lead figures from six accounts I ran.",
+        crumbs=[("Home", ""), ("Blog", BLOG)],
+        published="2026-08-17", modified="2026-08-17",
+    ),
+    "blog/freelancer-vs-agency-vs-in-house/index.html": dict(
+        kind="post",
+        title="Freelancer, Agency or In-House: How to Choose",
+        desc="A freelancer's comparison of the three, including when an agency or an employee is the better call, and the account ownership setup that protects you.",
+        crumbs=[("Home", ""), ("Blog", BLOG)],
+        published="2026-08-17", modified="2026-08-17",
+    ),
+    "blog/facebook-ads-audit/index.html": dict(
+        kind="post",
+        title="Facebook Ads Audit: The 12 Checks I Run First",
+        desc="The audit sequence I use on every new Meta account: signal before structure, structure before creative, and what each of the 12 checks looks like failing.",
+        crumbs=[("Home", ""), ("Blog", BLOG)],
+        published="2026-08-17", modified="2026-08-17",
+    ),
+    "blog/organic-vs-paid-social/index.html": dict(
+        kind="post",
+        title="Organic vs Paid Social: What Each One Is For",
+        desc="One brand, both channels: $712 of paid spend against a single organic Reel at 333,110 views. What each is genuinely for, and why organic is not free.",
+        crumbs=[("Home", ""), ("Blog", BLOG)],
+        published="2026-08-17", modified="2026-08-17",
+    ),
+
+    # The white-label cluster is the cheapest in the export (2,450/mo at KD
+    # 7-16) but it addresses agencies, not the primary buyer. Kept to this one
+    # page, written only to that reader, and never blended into the homepage
+    # or the owner-facing service pages.
+    "blog/white-label-facebook-ads/index.html": dict(
+        kind="post",
+        title="White Label Facebook Ads: A Guide for Agencies",
+        desc="How white label Meta ads arrangements work, from the delivery side: the three models, who must own the ad account, and when an agency should not outsource.",
+        crumbs=[("Home", ""), ("Blog", BLOG)],
+        published="2026-08-17", modified="2026-08-17",
+    ),
 }
 
 # ---- case studies: result-led titles, because "[Client] Case Study"

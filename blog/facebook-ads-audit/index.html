@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA:START -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9K49EJGCFB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9K49EJGCFB');
+</script>
+<!-- GA:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..700&family=Inter+Tight:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style-v2.css?v=8106a867">
+<!-- SEO:START -->
+<title>Facebook Ads Audit: The 12 Checks I Run First</title>
+<meta name="description" content="The audit sequence I use on every new Meta account: signal before structure, structure before creative, and what each of the 12 checks looks like failing.">
+<link rel="canonical" href="https://www.arshadhossain.com/blog/facebook-ads-audit/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.arshadhossain.com/blog/facebook-ads-audit/">
+<meta property="og:title" content="Facebook Ads Audit: The 12 Checks I Run First">
+<meta property="og:description" content="The audit sequence I use on every new Meta account: signal before structure, structure before creative, and what each of the 12 checks looks like failing.">
+<meta property="og:image" content="https://www.arshadhossain.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Arshad Hossain">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-17">
+<meta property="article:modified_time" content="2026-08-17">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Facebook Ads Audit: The 12 Checks I Run First">
+<meta name="twitter:description" content="The audit sequence I use on every new Meta account: signal before structure, structure before creative, and what each of the 12 checks looks like failing.">
+<meta name="twitter:image" content="https://www.arshadhossain.com/og-default.png">
+<meta name="author" content="Arshad Hossain">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "@id": "https://www.arshadhossain.com/blog/facebook-ads-audit/#post",
+   "headline": "Facebook Ads Audit: The 12 Checks I Run First",
+   "description": "The audit sequence I use on every new Meta account: signal before structure, structure before creative, and what each of the 12 checks looks like failing.",
+   "datePublished": "2026-08-17",
+   "dateModified": "2026-08-17",
+   "inLanguage": "en",
+   "image": "https://www.arshadhossain.com/og-default.png",
+   "author": {
+    "@id": "https://www.arshadhossain.com/#arshad"
+   },
+   "publisher": {
+    "@id": "https://www.arshadhossain.com/#arshad"
+   },
+   "isPartOf": {
+    "@id": "https://www.arshadhossain.com/#website"
+   },
+   "mainEntityOfPage": "https://www.arshadhossain.com/blog/facebook-ads-audit/"
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.arshadhossain.com/#arshad",
+   "name": "Arshad Hossain",
+   "url": "https://www.arshadhossain.com/about/"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://www.arshadhossain.com/blog/facebook-ads-audit/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.arshadhossain.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.arshadhossain.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Facebook Ads Audit: The 12 Checks I Run First"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.arshadhossain.com/blog/facebook-ads-audit/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How do I audit my own Facebook Ads account?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Work in this order: verify the conversion event fires exactly once, confirm server-side events are being sent with customer information attached, check that the optimisation event is the one tied to revenue, identify which attribution setting produced the numbers you are reading, and reconcile Ads Manager against your own CRM or inbox. Only then look at ad set structure, audiences, creative and the landing page. Auditing creative before signal means you will switch off ads that were working."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the most common problem in a Facebook Ads account?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Optimising for the wrong event. The ad set is set to a cheap event such as Add to Cart, landing page views or lead form opens, so Meta delivers exactly that, the reported cost per result looks excellent, and the business sees no revenue. The second most common is budget split across too many ad sets, so no single one reaches the conversion volume needed to deliver stably."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why are my Facebook ads not converting?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In the accounts I open, the order of likelihood is: the conversion event is not tracked correctly, so optimisation is working from bad data; the ad set is optimising for an event that is not the sale; the budget is spread so thin that no ad set leaves the learning phase; the creative is one idea in many variants rather than several distinct angles; or the landing page does not deliver what the ad promised. Audience targeting is usually blamed first and is rarely the main cause."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much conversion volume does a Facebook ad set need?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Meta's documented guidance is roughly 50 optimisation events within a seven day window for an ad set to leave the learning phase and deliver stably. Turn that into money before planning: at a $20 cost per lead, one ad set needs about $1,000 a week to get there. Divide your monthly budget by your target cost per lead and then by four, and you have the number of ad sets your account can genuinely support, which is usually one or two."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How often should a Facebook Ads account be audited?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Full audit when you take over an account, when performance changes without an obvious cause, and roughly twice a year otherwise. Four checks are worth repeating every month: that the conversion event still fires once, that Ads Manager still reconciles with your records, that ad sets are out of the learning phase, and that sales still consider the leads qualified. Tracking most often breaks during website changes, and the first symptom is a cost per lead that suddenly looks too good."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is a free Facebook Ads audit worth taking?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It depends on what comes back. A useful one names specific findings in your account: which event is misconfigured, which ad sets never left the learning phase, where reported conversions diverge from your records. A generic one is a sales document with your logo on it. Ask what the reviewer would fix first and why, and whether they will say plainly that the account is fine, because an audit that always finds a crisis is not an audit."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="../../" class="nav-name">arshad<span>.hossain</span></a>
+    <ul class="nav-links">
+      <li><a href="../../services/">Services</a></li>
+      <li><a href="../../cases/">Case Studies</a></li>
+      <li><a href="../../blog/">Blog</a></li>
+      <li><a href="../../about/">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../../free-audit/" class="nav-cta">Get a free audit</a>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="post-wrap">
+  <header class="post-head">
+    <p class="crumb"><a href="../../">Home</a><span>/</span><a href="../">Blog</a><span>/</span>Meta Ads</p>
+    <h1>Facebook Ads Audit: The 12 Checks I Run First</h1>
+    <p class="post-standfirst">The order matters more than the list. Nine times out of ten the problem is not the audience or the creative, it is that the account is optimising against a number that is not true. Here is the sequence I work through on every new account, and what a failing result looks like.</p>
+
+    <div class="byline">
+      <div>
+        <p class="byline-name"><a href="../../about/">Arshad Hossain</a></p>
+        <p class="byline-role">Independent Meta Ads &amp; SEO specialist &middot; BBA Marketing, BRAC University</p>
+      </div>
+      <p class="byline-dates">
+        Published 17 August 2026<br>
+        16 min read
+      </p>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <div class="callout">
+      <p class="callout-label">Where this comes from</p>
+      <p>This is the working sequence I use on client accounts, refined across 40+ accounts since 2020 and more than $250,000 of managed spend. The worked example running through it is a US hair and scalp clinic whose cost per lead went from $86 to $3.91 across 35 campaigns; the reporting screenshots are in the <a href="../../cases/scalp-shop/">case study</a> and the narrative version is <a href="../meta-ads-cost-per-lead/">here</a>. Cost per lead figures from five accounts are collected on the <a href="../../benchmarks/facebook-ads-cost-per-lead/">benchmark page</a>.</p>
+    </div>
+
+    <p>Most published Facebook Ads audit checklists are ordered by where things sit in the interface: campaign, then ad set, then ad. That is a convenient order for writing and a bad order for diagnosing, because it puts the audience and the creative before the data those decisions depend on.</p>
+
+    <p>Optimising creative against a broken conversion event is not slow progress. It is worse than doing nothing, because you will confidently switch off the ads that were working. So the sequence below starts with signal, moves to delivery, and only then looks at the ads themselves.</p>
+
+    <h2>Before check one: the number you need in hand</h2>
+
+    <p>Do not open Ads Manager yet. Work out what a lead is allowed to cost you, from your own margins: average order value or customer value, your close rate from a lead, and the margin you need to keep. A clinic closing one in five consultations at a few hundred dollars can afford a very different lead price from a roofer closing one in ten at several thousand.</p>
+
+    <p>Without that number, "is $18 a lead good?" has no answer, and the whole audit becomes an aesthetic exercise. Cost per lead in accounts I have run has ranged from <a href="../../cases/scalp-shop/">$3.91</a> to <a href="../../cases/roofing/">$66.60</a>, and both were good results in their own category. The number that matters is yours.</p>
+
+    <h2>Signal: checks 1 to 5</h2>
+
+    <h3>1. Is the conversion event firing, exactly once?</h3>
+
+    <p>Trigger the conversion yourself, on a phone, and watch it arrive in Events Manager. Then keep watching. The two failures are equally common: nothing arrives, or the same conversion arrives twice because the event is fired both by the pixel in the browser and by a server-side integration without a shared deduplication key.</p>
+
+    <p><strong>Failing looks like:</strong> a conversion count in Ads Manager that is a clean multiple of reality, or a Purchase event that fires on page load rather than on completion. Double counting halves your apparent cost per acquisition, which is why nobody investigates it.</p>
+
+    <h3>2. Are server-side events being sent, with customer information attached?</h3>
+
+    <p>Browser-only tracking loses events to ad blockers, tracking prevention and consent choices. The Conversions API sends events from your server instead, and it accepts customer information parameters so Meta can match an event to a person <a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener">[1]</a>. Events Manager shows an event match quality score per event, and it is the fastest read on whether your signal is any good.</p>
+
+    <p><strong>Failing looks like:</strong> no server events at all, or server events sent bare, with no hashed email or phone. A low match quality score on your primary conversion means Meta cannot reliably tie results back to people, and optimisation degrades accordingly.</p>
+
+    <h3>3. Is the optimisation event the one that actually makes money?</h3>
+
+    <p>This is the single most common structural error I find. The ad set is optimising for a cheap event, so Meta dutifully delivers cheap events: landing page views, Add to Cart, form opens, link clicks. The reported cost per result looks excellent and the business gets nothing.</p>
+
+    <p><strong>Failing looks like:</strong> an ad set optimising for Add to Cart while the business needs purchases, or for a lead form open rather than a completed submission. Meta will optimise for exactly what you asked for, which is the problem.</p>
+
+    <h3>4. Which attribution setting produced the number you are reading?</h3>
+
+    <p>The same campaign shows different results under different attribution windows. A conversion counted from a view rather than a click is a much weaker claim, and comparing a report on one setting to a report on another is a comparison of nothing.</p>
+
+    <p><strong>Failing looks like:</strong> monthly reports where the window has quietly changed, or a view-through window doing most of the work in a campaign being described as direct response.</p>
+
+    <h3>5. Does Ads Manager reconcile with your own records?</h3>
+
+    <p>Export the leads or orders Meta claims for a fixed period and count the same period in your CRM, inbox or back office. You are looking for a ratio, not a match: platform reporting and your records will never agree exactly, but you need to know whether the gap is 10% or 60%.</p>
+
+    <p><strong>Failing looks like:</strong> Ads Manager reporting 40 leads and the client finding 12 in their inbox. Until that gap is explained, no other number in the account can be trusted. In the clinic account this reconciliation was the step that changed everything: once the tracking told the truth, the optimisation had something real to pull against.</p>
+
+    <h2>Delivery and structure: checks 6 to 9</h2>
+
+    <h3>6. How many ad sets are stuck in the learning phase?</h3>
+
+    <p>New and significantly edited ad sets enter a learning phase while delivery stabilises, and Meta's documented guidance is that roughly 50 optimisation events inside a seven day window are needed to leave it <a href="https://www.facebook.com/business/help/112167992830700" target="_blank" rel="noopener">[2]</a>. Below that, performance swings are noise and you should not be drawing conclusions from them.</p>
+
+    <p>Do the arithmetic in the other direction, because it is unforgiving. At a $20 cost per lead, 50 events a week is $1,000 a week for <em>one</em> ad set to stabilise. Divide your monthly budget by your target cost per lead, divide by four, and you have the number of ad sets your account can actually support. It is usually one or two, and most accounts I audit are running six.</p>
+
+    <p><strong>Failing looks like:</strong> most ad sets showing Learning or Learning Limited, and an edit history full of small budget and audience changes, each one restarting the clock.</p>
+
+    <h3>7. Is the budget split too many ways?</h3>
+
+    <p>Follow the maths from check six. Every additional ad set divides the conversion volume that the delivery system needs to work with, and three underfunded ad sets consistently lose to one funded one.</p>
+
+    <p><strong>Failing looks like:</strong> eight ad sets on a small daily budget, several spending almost nothing, several duplicating each other's audience.</p>
+
+    <h3>8. Are the audiences overlapping, or too narrow?</h3>
+
+    <p>Check whether several ad sets are competing for the same people, which raises your own costs, and check whether any audience is too small to sustain delivery. Then check the assumption underneath the targeting, which is often the real problem: in the clinic account the broad audience assumption was wrong, and narrowing to the people with the specific problem was one of the changes that moved the number.</p>
+
+    <p><strong>Failing looks like:</strong> multiple ad sets on near-identical interest stacks, or a saved audience nobody has revisited in a year.</p>
+
+    <h3>9. What is frequency doing, and how old is the winning ad?</h3>
+
+    <p>Rising frequency with a falling click-through rate is creative fatigue, and it shows up as a slowly rising cost per lead that gets blamed on the algorithm. Look at how long the current best performer has been the best performer.</p>
+
+    <p><strong>Failing looks like:</strong> the same three ads running for four months, frequency climbing, cost per result drifting up week over week.</p>
+
+    <h2>Creative and destination: checks 10 to 12</h2>
+
+    <h3>10. How many distinct angles are you testing, not how many variants?</h3>
+
+    <p>Twelve ads that are one idea in twelve colourways is one test. Three ads attacking three different objections is three tests. On Meta the creative carries the targeting, so the angle is the variable that matters.</p>
+
+    <p>The framing that has worked best for me is to write against the objection rather than the product. In the clinic account the shift was from describing the treatment to addressing the specific hesitation a person had before booking. That, plus honest tracking, is most of the story behind the 95% reduction.</p>
+
+    <p><strong>Failing looks like:</strong> an ad account full of variants and no hypotheses, or a single hero video with nothing to compare it against.</p>
+
+    <h3>11. Where do people fall out after the click?</h3>
+
+    <p>Open the landing page on a phone, on mobile data, and try to convert. Time it. Count the fields in the form. Check that the page answers the promise the ad made, in the first screen, in the same words. A large share of accounts described as having an ads problem have a destination problem.</p>
+
+    <p>If you are using instant forms instead, compare completion rates against your landing page rather than assuming: instant forms usually produce cheaper leads and often weaker ones, which leads directly to the last check.</p>
+
+    <p><strong>Failing looks like:</strong> a slow page, a form asking for nine fields, or an ad promising one thing and a page describing another.</p>
+
+    <h3>12. Are the leads any good?</h3>
+
+    <p>Lead count is not the deliverable. Ask the person who actually calls them: what proportion answer, what proportion are qualified, what proportion buy. A campaign producing cheap unqualified leads is worse than a campaign producing fewer expensive ones, and the account will look better on paper while the business gets worse.</p>
+
+    <p>Where quality is the problem, the fix is usually upstream of the ad: add friction deliberately, qualify inside the form, state the price range in the creative, or optimise for a deeper event. In the <a href="../../cases/nevada/">B2B account</a> the useful figure was 64 website leads at $5.08 <em>and</em> the fact that they were the right kind of lead; in the <a href="../../cases/tombizmerch/">merchandise account</a>, three of 64 leads went into active sales conversations within the first week, which is the number that mattered to the client.</p>
+
+    <p><strong>Failing looks like:</strong> nobody has asked. If sales and ads are not comparing notes monthly, assume quality is unknown rather than fine.</p>
+
+    <h2>The whole sequence on one page</h2>
+
+    <div class="table-scroll">
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Check</th><th>Failing looks like</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Conversion event fires, exactly once</td><td>Nothing arrives, or every conversion double counted</td></tr>
+        <tr><td>2</td><td>Server-side events with customer information</td><td>Browser-only tracking, low event match quality</td></tr>
+        <tr><td>3</td><td>Optimisation event tied to revenue</td><td>Optimising for Add to Cart or form opens</td></tr>
+        <tr><td>4</td><td>Attribution setting behind the report</td><td>Window changed silently, or view-through carrying the result</td></tr>
+        <tr><td>5</td><td>Ads Manager reconciles with your records</td><td>40 leads reported, 12 in the inbox</td></tr>
+        <tr><td>6</td><td>Ad sets out of the learning phase</td><td>Most ad sets in Learning or Learning Limited</td></tr>
+        <tr><td>7</td><td>Budget concentrated enough to work</td><td>Eight ad sets, none reaching 50 events a week</td></tr>
+        <tr><td>8</td><td>Audience overlap and size</td><td>Ad sets bidding against each other on the same people</td></tr>
+        <tr><td>9</td><td>Frequency and creative age</td><td>Frequency climbing, click-through rate falling</td></tr>
+        <tr><td>10</td><td>Distinct angles, not variants</td><td>One idea in twelve colourways</td></tr>
+        <tr><td>11</td><td>The destination after the click</td><td>Slow page, nine form fields, mismatched promise</td></tr>
+        <tr><td>12</td><td>Lead quality, verified with sales</td><td>Nobody has asked</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2>What I do not change in the first week</h2>
+
+    <p>An audit is diagnosis, and the temptation is to fix everything at once. Two reasons not to.</p>
+
+    <p>First, every significant edit restarts the learning phase, so a sweep of changes across every ad set buys you two weeks of unstable delivery and no way to tell which change did what. Fix the signal problems immediately, because those are corrections rather than experiments, then change one structural thing at a time.</p>
+
+    <p>Second, some of what looks broken is load bearing. I have switched off an underperforming ad set and watched the account get worse, because it was doing prospecting work that the better-looking retargeting ad set depended on. In the clinic account two rounds of changes actively made performance worse before the trend turned, and I wrote those two rounds up in the <a href="../meta-ads-cost-per-lead/">longer account of it</a> rather than presenting a straight line.</p>
+
+    <h2>What this audit will not tell you</h2>
+
+    <ul>
+      <li><strong>Whether the offer is any good.</strong> No account structure survives a product people do not want at the price you are asking. Ads make an offer visible; they do not make it attractive.</li>
+      <li><strong>Whether Meta is the right channel at all.</strong> If demand for your category already exists as search volume, some of this budget probably belongs on search. That trade is the subject of <a href="../facebook-ads-vs-google-ads/">a separate post</a>.</li>
+      <li><strong>What your competitors are paying.</strong> Published benchmarks are useful context and nothing more. Your close rate and margins decide what a lead is worth to you.</li>
+      <li><strong>Anything, if you run it once.</strong> Checks 1, 5, 6 and 12 are worth repeating monthly. Tracking breaks silently during site changes, and the first symptom is usually a cost per lead that looks unaccountably good.</li>
+    </ul>
+
+    <p>If you only have an hour, do checks 1, 3 and 5. Firing correctly, optimising for the right event, and agreeing with your own records covers most of what is actually wrong in most accounts I open.</p>
+
+  </div>
+
+  <section class="faq">
+    <h2>Common questions</h2>
+
+    <h3>How do I audit my own Facebook Ads account?</h3>
+    <p>Work in this order: verify the conversion event fires exactly once, confirm server-side events are being sent with customer information attached, check that the optimisation event is the one tied to revenue, identify which attribution setting produced the numbers you are reading, and reconcile Ads Manager against your own CRM or inbox. Only then look at ad set structure, audiences, creative and the landing page. Auditing creative before signal means you will switch off ads that were working.</p>
+
+    <h3>What is the most common problem in a Facebook Ads account?</h3>
+    <p>Optimising for the wrong event. The ad set is set to a cheap event such as Add to Cart, landing page views or lead form opens, so Meta delivers exactly that, the reported cost per result looks excellent, and the business sees no revenue. The second most common is budget split across too many ad sets, so no single one reaches the conversion volume needed to deliver stably.</p>
+
+    <h3>Why are my Facebook ads not converting?</h3>
+    <p>In the accounts I open, the order of likelihood is: the conversion event is not tracked correctly, so optimisation is working from bad data; the ad set is optimising for an event that is not the sale; the budget is spread so thin that no ad set leaves the learning phase; the creative is one idea in many variants rather than several distinct angles; or the landing page does not deliver what the ad promised. Audience targeting is usually blamed first and is rarely the main cause.</p>
+
+    <h3>How much conversion volume does a Facebook ad set need?</h3>
+    <p>Meta's documented guidance is roughly 50 optimisation events within a seven day window for an ad set to leave the learning phase and deliver stably. Turn that into money before planning: at a $20 cost per lead, one ad set needs about $1,000 a week to get there. Divide your monthly budget by your target cost per lead and then by four, and you have the number of ad sets your account can genuinely support, which is usually one or two.</p>
+
+    <h3>How often should a Facebook Ads account be audited?</h3>
+    <p>Full audit when you take over an account, when performance changes without an obvious cause, and roughly twice a year otherwise. Four checks are worth repeating every month: that the conversion event still fires once, that Ads Manager still reconciles with your records, that ad sets are out of the learning phase, and that sales still consider the leads qualified. Tracking most often breaks during website changes, and the first symptom is a cost per lead that suddenly looks too good.</p>
+
+    <h3>Is a free Facebook Ads audit worth taking?</h3>
+    <p>It depends on what comes back. A useful one names specific findings in your account: which event is misconfigured, which ad sets never left the learning phase, where reported conversions diverge from your records. A generic one is a sales document with your logo on it. Ask what the reviewer would fix first and why, and whether they will say plainly that the account is fine, because an audit that always finds a crisis is not an audit.</p>
+  </section>
+
+  <div class="prose">
+
+    <h2 class="related">Related reading</h2>
+    <ul>
+      <li><a href="../meta-ads-cost-per-lead/">How I cut a cost per lead from $86 to $3.91</a></li>
+      <li><a href="../facebook-ads-vs-google-ads/">Facebook Ads vs Google Ads: which one do you need?</a></li>
+      <li><a href="../../benchmarks/facebook-ads-cost-per-lead/">Facebook Ads cost per lead across five real accounts</a></li>
+      <li><a href="../freelancer-vs-agency-vs-in-house/">Freelancer, agency or in-house: how to choose</a></li>
+    </ul>
+
+    <div class="post-cta">
+      <h2>Want me to run these 12 checks on your account?</h2>
+      <p>Give me access as a partner and I will work through the list and send back what is costing you money, in order, with what I would change first. No cost, and I will tell you if the account is already fine.</p>
+      <a href="../../free-audit/" class="btn btn-primary">Get a free audit <svg class="ico" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="author-box">
+      <div>
+        <p class="byline-name"><a href="../../about/">Arshad Hossain</a></p>
+        <p class="byline-role">Independent Meta Ads &amp; SEO specialist &middot; BBA Marketing, BRAC University</p>
+        <p>Since 2020 I have managed more than $250,000 in ad spend across 40+ client accounts, mainly in the United States, Canada and Singapore. Documented cost per lead results range from $3.91 to $66.60 depending on category, and the reporting behind each is published rather than described.</p>
+        <p><a href="../../services/meta-ads-management/">Meta Ads management</a> &middot; <a href="../../cases/">See the case studies</a> &middot; <a href="https://www.linkedin.com/in/arshad-hossain-8a6241130/" target="_blank" rel="noopener">LinkedIn <svg class="ico" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a></p>
+      </div>
+    </div>
+
+    <div class="sources">
+      <h2>Sources &amp; further reading</h2>
+      <ol>
+        <li>Meta for Developers, <a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener">Conversions API</a>: server-side events, customer information parameters and deduplication.</li>
+        <li>Meta Business Help Centre, <a href="https://www.facebook.com/business/help/112167992830700" target="_blank" rel="noopener">About the learning phase</a>: optimisation event volume and delivery stability.</li>
+        <li>Primary data: Meta Ads Manager reporting, client accounts, 2023 to 2026. Figures collected on the <a href="../../benchmarks/facebook-ads-cost-per-lead/">cost per lead benchmark page</a>, screenshots in the <a href="../../cases/">case studies</a>.</li>
+      </ol>
+    </div>
+
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-left">&copy; 2026 Arshad Hossain &middot; Meta Ads &amp; SEO</p>
+    <div class="footer-right">
+      <a href="../../services/">Services</a>
+      <a href="../../benchmarks/">Benchmarks</a>
+      <a href="../../projects/">Projects</a>
+      <a href="../../contact/">Contact</a>
+      <a href="https://www.linkedin.com/in/arshad-hossain-8a6241130/" target="_blank" rel="noopener">LinkedIn <svg class="ico" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../motion.js?v=74c777f4" defer></script>
+</body>
+</html>
